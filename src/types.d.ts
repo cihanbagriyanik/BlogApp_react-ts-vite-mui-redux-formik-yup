@@ -14,9 +14,8 @@ interface FormValues {
   lastName: string;
 }
 
-
 interface OtherProps {
   message?: string;
 }
 
-type msg = (msg: string) => Promise<void>;
+type Msg = (msg: string) => Promise<void>;

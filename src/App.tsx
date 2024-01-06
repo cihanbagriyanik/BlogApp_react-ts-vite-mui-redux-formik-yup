@@ -21,12 +21,12 @@ function App() {
   return (
     <>
       {/* <ThemeProvider theme={theme}> */}
-        <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
-            <AppRouter />
-          </PersistGate>
-        </Provider>
-        <ToastContainer />
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <AppRouter />
+        </PersistGate>
+      </Provider>
+      <ToastContainer />
       {/* </ThemeProvider> */}
     </>
   );

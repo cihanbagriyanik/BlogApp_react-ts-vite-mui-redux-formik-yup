@@ -1,8 +1,7 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import { string } from "yup";
 
-export const toastWarnNotify = (msg: string) => {
+export const toastWarnNotify: Msg = async (msg) => {
   toast.warn(msg, {
     autoClose: 1000,
     hideProgressBar: false,
@@ -13,7 +12,7 @@ export const toastWarnNotify = (msg: string) => {
   });
 };
 
-export const toastSuccessNotify = (msg: string) => {
+export const toastSuccessNotify: Msg = async (msg) => {
   toast.success(msg, {
     autoClose: 1500,
     hideProgressBar: false,
@@ -24,7 +23,7 @@ export const toastSuccessNotify = (msg: string) => {
   });
 };
 
-export const toastErrorNotify = (msg: string) => {
+export const toastErrorNotify: Msg = async (msg) => {
   toast.error(msg, {
     autoClose: 2000,
     hideProgressBar: false,

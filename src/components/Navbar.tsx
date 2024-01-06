@@ -43,7 +43,7 @@ function Navbar() {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
-    // navigate("pages.url"); //! *******************************
+    navigate("pages.url"); //! *******************************
   };
 
   const handleCloseUserMenu = () => {
@@ -55,7 +55,6 @@ function Navbar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
           <Typography
             variant="h6"
             noWrap
