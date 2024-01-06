@@ -12,6 +12,8 @@ interface FormValues {
   username: string;
   firstName: string;
   lastName: string;
+  image: string;
+  bio: string;
 }
 
 interface OtherProps {

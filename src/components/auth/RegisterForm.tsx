@@ -1,3 +1,4 @@
+import { InputAdornment } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -10,11 +11,11 @@ export const SignupSchema = Yup.object().shape({
     .max(50, "Too Long!")
     .required("Notwendig!"),
   username: Yup.string()
-    .min(2, "Too Short!")
+    .min(3, "Too Short!")
     .max(50, "Too Long!")
     .required("Notwendig!"),
   lastName: Yup.string()
-    .min(2, "Too Short!")
+    .min(3, "Too Short!")
     .max(50, "Too Long!")
     .required("Notwendig!"),
   email: Yup.string().email().required("Notwendig!"),
@@ -93,6 +94,61 @@ const RegisterForm = (props: OtherProps & FormikProps<FormValues>) => {
             onBlur={handleBlur}
             helperText={touched.email && errors.email}
             error={touched.email && Boolean(errors.email)}
+          />
+
+
+          <TextField
+            // label="Image"
+            name="image"
+            id="image"
+            type="file"
+            variant="outlined"
+            value={values.image}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            helperText={touched.image && errors.image}
+            error={touched.image && Boolean(errors.image)}
+            InputLabelProps={
+              {
+                shrink: true,
+                style: { display: 'block' },
+              }
+            }
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  {values.image ? "No file chosen" : "Image"}
+                </InputAdornment>
+              ),
+            }}
+          />
+
+          {/* <TextField
+            label="Image"
+            name="image"
+            id="image"
+            type="file"
+            variant="outlined"
+            value={values.image}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            helperText={touched.image && errors.image}
+            error={touched.image && Boolean(errors.image)}
+            InputLabelProps={{
+              shrink: true,
+            }}
+          /> */}
+          <TextField
+            label="Bio"
+            name="bio"
+            id="bio"
+            type="bio"
+            variant="outlined"
+            value={values.bio}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            helperText={touched.bio && errors.bio}
+            error={touched.bio && Boolean(errors.bio)}
           />
           <TextField
             label="password"

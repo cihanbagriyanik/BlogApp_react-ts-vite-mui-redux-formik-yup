@@ -22,7 +22,6 @@ const settings = [
   { title: "Profile", url: "profile" },
   { title: "My Blogs", url: "#" },
   { title: "Login", url: "login" },
-  { title: "Logout", url: "logout" },
 ];
 
 function Navbar() {
@@ -41,14 +40,14 @@ function Navbar() {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (url: string) => {
     setAnchorElNav(null);
-    navigate("pages.url"); //! *******************************
+    navigate(url);
   };
 
-  const handleCloseUserMenu = () => {
+  const handleCloseUserMenu = (url: string) => {
     setAnchorElUser(null);
-    navigate("settings.url"); //! *******************************
+    navigate(url);
   };
 
   return (
@@ -104,7 +103,10 @@ function Navbar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page.title} onClick={handleCloseNavMenu}>
+                <MenuItem
+                  key={page.title}
+                  onClick={() => handleCloseNavMenu(page.url)}
+                >
                   <Typography textAlign="center">{page.title}</Typography>
                 </MenuItem>
               ))}
@@ -133,7 +135,7 @@ function Navbar() {
             {pages.map((page) => (
               <Button
                 key={page.title}
-                onClick={handleCloseNavMenu}
+                onClick={() => handleCloseNavMenu(page.url)}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page.title}
@@ -164,7 +166,10 @@ function Navbar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting.title} onClick={handleCloseUserMenu}>
+                <MenuItem
+                  key={setting.title}
+                  onClick={() => handleCloseUserMenu(setting.url)}
+                >
                   <Typography textAlign="center">{setting.title}</Typography>
                 </MenuItem>
               ))}
