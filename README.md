@@ -12,54 +12,6 @@ Project aims to create a Milestone Blog App.
 - We are adding a new project to our portfolios. So you and your colleagues have started to work on the project.
 
 ## Project Skeleton Example
-
-```
-Milestone Blog App (folder for context)
-|       # Given to the students (Definition of the project)
-SOLUTION
-├── src
-│    ├── index.js
-│    ├── App.js
-│    ├── assets
-│    │   └── cw.png
-│    ├── components
-│    │   ├── auth
-│    │   │   ├── Login.jsx
-│    │   │   └── Register.jsx
-│    │   ├── blog
-│    │   │   ├── BlogCard.jsx
-│    │   │   ├── BlogForm.jsx
-│    │   │   ├── CommentForm.jsx
-│    │   │   ├── DeleteModal.jsx
-│    │   │   └── UpdateModal.jsx
-│    │   ├── Footers.jsx
-│    │   └── NavBars.jsx
-│    ├── context
-│    │   ├── AuthContext.jsx
-│    │   └── BlogContext.jsx
-│    ├── helper
-│    │   ├── ToastNotify.jsx
-│    │   └── menuList.js
-│    ├── pages
-│    │   ├── About.jsx
-│    │   ├── Auth.jsx
-│    │   ├── BlogDetail.jsx
-│    │   ├── Dashboard.jsx
-│    │   ├── MyBlog.jsx
-│    │   ├── NewBlog.jsx
-│    │   └── Profile.jsx
-│    ├── reducer
-│    │   ├── authReducer.js
-│    │   └── blogReducer.js
-│    ├── router
-│    │   ├── AppRouter.jsx
-│    │   └── PrivateRouter.jsx
-│    ├── service
-│    │   └── useAxios.jsx
-│    └── styles
-│        └── globalStyles.jsx
-```
-
 ```
 Milestone Blog App (folder for redux)
 
