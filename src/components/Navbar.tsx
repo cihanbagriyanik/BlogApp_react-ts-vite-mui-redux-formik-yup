@@ -38,11 +38,11 @@ function Navbar() {
     : [{ title: "Login", url: "/" }];
 
   React.useEffect(() => {
-    console.log("useEffect is running");
-    console.log("currentUser:", currentUser);
-    console.log("window.location.pathname:", window.location.pathname);
-    if (currentUser && window.location.pathname == "/") {
-      console.log("if is runnig");
+    // console.log("useEffect is running");
+    // console.log("currentUser:", currentUser);
+    // console.log("window.location.pathname:", window.location.pathname);
+    if (currentUser && window.location.pathname === "/dashboard") {
+      // console.log("if is runnig");
       navigate("/blogapp");
     }
   }, [currentUser]);
