@@ -51,9 +51,13 @@ const Register = () => {
               lastName: "",
               email: "",
               password: "",
+              image: "",
+              bio: "",
+              shrink: false,
             }}
             validationSchema={SignupSchema}
             onSubmit={(values, actions) => {
+              console.log(values);
               register(values);
               actions.resetForm();
               actions.setSubmitting(false);
@@ -70,6 +74,3 @@ const Register = () => {
 };
 
 export default Register;
-
-
-

@@ -24,7 +24,7 @@ const useAuthCall = () => {
       // console.log("register", data);
       dispatch(registerSuccess(data));
       toastSuccessNotify("Register is successfully");
-      navigate("/stock");
+      navigate("/dashboard");
     } catch (error) {
       dispatch(fetchFail());
       toastErrorNotify(
@@ -39,7 +39,7 @@ const useAuthCall = () => {
       const { data } = await axios.post(`${BASE_URL}auth/login/`, userInfo);
       dispatch(loginSuccess(data));
       toastSuccessNotify("Login successfully");
-      navigate("/stock");
+      navigate("/dashboard");
       // console.log(data);
     } catch (error) {
       dispatch(fetchFail());

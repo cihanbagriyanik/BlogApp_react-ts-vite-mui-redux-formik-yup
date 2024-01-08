@@ -1,4 +1,4 @@
-import { InputAdornment } from "@mui/material";
+// import { InputAdornment } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -35,6 +35,9 @@ export const SignupSchema = Yup.object().shape({
 //   username: string;
 //   firstName: string;
 //   lastName: string;
+//   image: string;
+//   bio: string;
+//   shrink: boolean;
 // }
 
 // interface OtherProps {
@@ -96,8 +99,7 @@ const RegisterForm = (props: OtherProps & FormikProps<FormValues>) => {
             error={touched.email && Boolean(errors.email)}
           />
 
-
-          <TextField
+          {/* <TextField
             // label="Image"
             name="image"
             id="image"
@@ -121,9 +123,9 @@ const RegisterForm = (props: OtherProps & FormikProps<FormValues>) => {
                 </InputAdornment>
               ),
             }}
-          />
+          /> */}
 
-          {/* <TextField
+          <TextField
             label="Image"
             name="image"
             id="image"
@@ -137,7 +139,7 @@ const RegisterForm = (props: OtherProps & FormikProps<FormValues>) => {
             InputLabelProps={{
               shrink: true,
             }}
-          /> */}
+          />
           <TextField
             label="Bio"
             name="bio"

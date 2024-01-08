@@ -14,6 +14,7 @@ interface FormValues {
   lastName: string;
   image: string;
   bio: string;
+  shrink: boolean;
 }
 
 interface OtherProps {
