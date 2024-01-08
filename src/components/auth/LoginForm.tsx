@@ -60,14 +60,14 @@ const LoginForm = (props: FormikProps<FormValues>) => {
           </Button>
         )}
 
-        <Button
+        {/* <Button
           variant="contained"
           type="submit"
           disabled={loading}
           startIcon={loading && <CircularProgress />}
         >
           Submit
-        </Button>
+        </Button> */}
       </Box>
     </Form>
   );

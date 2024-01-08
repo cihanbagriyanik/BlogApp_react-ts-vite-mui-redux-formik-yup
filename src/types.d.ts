@@ -7,14 +7,14 @@ interface authState {
 }
 
 interface FormValues {
-  email: string;
-  password: string;
-  username: string;
-  firstName: string;
-  lastName: string;
-  image: string;
-  bio: string;
-  shrink: boolean;
+  email?: string;
+  password?: string;
+  username?: string;
+  firstName?: string;
+  lastName?: string;
+  image?: string;
+  bio?: string;
+  shrink?: boolean;
 }
 
 interface OtherProps {
