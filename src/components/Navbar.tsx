@@ -41,7 +41,7 @@ function Navbar() {
     // console.log("useEffect is running");
     // console.log("currentUser:", currentUser);
     // console.log("window.location.pathname:", window.location.pathname);
-    if (currentUser && window.location.pathname === "/dashboard") {
+    if (currentUser && window.location.pathname === "/") {
       // console.log("if is runnig");
       navigate("/blogapp");
     }
