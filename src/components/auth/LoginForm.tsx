@@ -15,10 +15,10 @@ export const loginScheme = object().shape({
   password: string().required("password zorunludur"),
 });
 
-// interface FormValues {
-//   email: string;
-//   password: string;
-// }
+interface FormValues {
+  email: string;
+  password: string;
+}
 
 const LoginForm = (props: FormikProps<FormValues>) => {
   const { loading } = useSelector((state: RootState) => state.auth);

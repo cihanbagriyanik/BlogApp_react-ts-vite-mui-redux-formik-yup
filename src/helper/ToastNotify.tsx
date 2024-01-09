@@ -1,6 +1,8 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+type Msg = (msg: string) => Promise<void>;
+
 export const toastWarnNotify: Msg = async (msg) => {
   toast.warn(msg, {
     autoClose: 1000,

@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// interface authState {
-//   loading: boolean;
-//   error: boolean;
-//   currentUser: string;
-//   isAdmin: boolean;
-//   token: string;
-// }
+interface authState {
+  loading: boolean;
+  error: boolean;
+  currentUser: string;
+  isAdmin: boolean;
+  token: string;
+}
 
 const initialState: authState = {
   loading: false,

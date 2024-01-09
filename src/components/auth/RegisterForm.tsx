@@ -5,8 +5,6 @@ import TextField from "@mui/material/TextField";
 import { Form, FormikProps } from "formik";
 import * as Yup from "yup";
 
-// import { OtherProps, FormValues } from '../../types'; //! **************
-
 export const SignupSchema = Yup.object().shape({
   firstName: Yup.string()
     .min(2, "Too Short!")
@@ -31,23 +29,18 @@ export const SignupSchema = Yup.object().shape({
     .required("Requeired!"),
 });
 
-// interface FormValues {
-//   email: string;
-//   password: string;
-//   username: string;
-//   firstName: string;
-//   lastName: string;
-//   image?: string;
-//   city?: string;
-//   bio?: string;
-//   shrink: boolean;
-// }
+interface FormValues {
+  email: string;
+  password: string;
+  username: string;
+  firstName: string;
+  lastName: string;
+  image?: string;
+  city?: string;
+  bio?: string;
+}
 
-// interface OtherProps {
-//   message: string;
-// }
-
-const RegisterForm = (props: OtherProps & FormikProps<FormValues>) => {
+const RegisterForm = (props: FormikProps<FormValues>) => {
   const { values, handleChange, errors, touched, handleBlur, isSubmitting } =
     props;
 
