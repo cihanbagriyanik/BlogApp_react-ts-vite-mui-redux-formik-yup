@@ -15,11 +15,12 @@ import { useNavigate } from "react-router-dom";
 
 import useAuthCall from "../hooks/useAuthCalls";
 import { useSelector } from "react-redux";
+import { RootState } from "../app/store";
 
-function Navbar() {
+const Navbar: React.FC = () => {
   const navigate = useNavigate();
 
-  const { currentUser } = useSelector((state: any) => state.auth);
+  const { currentUser } = useSelector((state: RootState) => state.auth);
 
   const { logOut } = useAuthCall();
 
@@ -218,5 +219,5 @@ function Navbar() {
       </Container>
     </AppBar>
   );
-}
+};
 export default Navbar;

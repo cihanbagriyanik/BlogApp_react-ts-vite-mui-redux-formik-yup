@@ -1,25 +1,27 @@
 import { Button, CircularProgress } from "@mui/material";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+
 import { Form, FormikProps } from "formik";
 import { useSelector } from "react-redux";
 import { object, string } from "yup";
 
-export const loginScheme = object({
+import { RootState } from "../../app/store";
+
+export const loginScheme = object().shape({
   email: string()
     .email("Lutfen valid bir email giriniz")
     .required("Email zorunludur"),
   password: string().required("password zorunludur"),
 });
 
-
-interface FormValues {
-  email: string;
-  password: string;
-}
+// interface FormValues {
+//   email: string;
+//   password: string;
+// }
 
 const LoginForm = (props: FormikProps<FormValues>) => {
-  const { loading } = useSelector((state:any) => state.auth);
+  const { loading } = useSelector((state: RootState) => state.auth);
 
   const { values, handleChange, errors, touched, handleBlur } = props;
 

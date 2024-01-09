@@ -5,20 +5,22 @@ import TextField from "@mui/material/TextField";
 import { Form, FormikProps } from "formik";
 import * as Yup from "yup";
 
+// import { OtherProps, FormValues } from '../../types'; //! **************
+
 export const SignupSchema = Yup.object().shape({
   firstName: Yup.string()
     .min(2, "Too Short!")
     .max(50, "Too Long!")
-    .required("Notwendig!"),
+    .required("Requeired!"),
   username: Yup.string()
     .min(3, "Too Short!")
     .max(50, "Too Long!")
-    .required("Notwendig!"),
+    .required("Requeired!"),
   lastName: Yup.string()
     .min(3, "Too Short!")
     .max(50, "Too Long!")
-    .required("Notwendig!"),
-  email: Yup.string().email().required("Notwendig!"),
+    .required("Requeired!"),
+  email: Yup.string().email().required("Requeired!"),
   password: Yup.string()
     .min(8, "Er muss mindestens 8 Zeichen lang sein!")
     .max(50, "Er darf maximal 50 Zeichen lang sein!")
@@ -26,7 +28,7 @@ export const SignupSchema = Yup.object().shape({
     .matches(/[A-Z]/, "Muss mindestens einen Großbuchstaben enthalten!")
     .matches(/[a-z]/, "Muss mindestens einen Kleinbuchstaben enthalten!")
     .matches(/[@$!%*?&]+/, "Muss mindestens ein Sonderzeichen enthalten!")
-    .required("Notwendig!"),
+    .required("Requeired!"),
 });
 
 // interface FormValues {
@@ -35,8 +37,9 @@ export const SignupSchema = Yup.object().shape({
 //   username: string;
 //   firstName: string;
 //   lastName: string;
-//   image: string;
-//   bio: string;
+//   image?: string;
+//   city?: string;
+//   bio?: string;
 //   shrink: boolean;
 // }
 
@@ -139,6 +142,18 @@ const RegisterForm = (props: OtherProps & FormikProps<FormValues>) => {
             InputLabelProps={{
               shrink: true,
             }}
+          />
+          <TextField
+            label="City"
+            name="city"
+            id="city"
+            type="city"
+            variant="outlined"
+            value={values.city}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            helperText={touched.city && errors.city}
+            error={touched.city && Boolean(errors.city)}
           />
           <TextField
             label="Bio"

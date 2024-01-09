@@ -1,3 +1,5 @@
+import React from "react";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Login from "../pages/Login";
@@ -15,7 +17,7 @@ import NotFound from "../pages/NotFound";
 import Footer from "../components/Footer";
 import MyBlog from "../pages/MyBlog";
 
-const AppRouter = () => {
+const AppRouter: React.FC = () => {
   return (
     <Router>
       <Navbar />
