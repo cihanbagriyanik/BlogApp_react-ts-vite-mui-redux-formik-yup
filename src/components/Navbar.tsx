@@ -13,7 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
 
-import useAuthCall from "../hooks/useAuthCalls";
+import useAuthCall from "../hooks/useAuthCall";
 import { useSelector } from "react-redux";
 import { RootState } from "../app/store";
 

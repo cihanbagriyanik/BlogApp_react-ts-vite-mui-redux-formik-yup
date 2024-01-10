@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
-import MyCard from "../components/blog/MyCard";
+import BlogsCard from "../components/blog/BlogsCard";
 
 const Dashboard = () => {
   return (
     <div>
-      <MyCard />
+      <BlogsCard />
 
       <Outlet />
     </div>

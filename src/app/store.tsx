@@ -1,6 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "../features/authSlice";
 
+import blogsReducer from "../features/blogsSlice";
+
 import {
   persistStore,
   persistReducer,
@@ -23,6 +25,7 @@ const persistedReducer = persistReducer(persistConfig, authReducer);
 const store = configureStore({
   reducer: {
     auth: persistedReducer,
+    blogs: blogsReducer,
   },
 
   middleware: (getDefaultMiddleware: any) =>
@@ -38,10 +41,8 @@ const store = configureStore({
 export let persistor = persistStore(store);
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type AppDispatch = typeof store.dispatch
+export type AppDispatch = typeof store.dispatch;
 
 export default store;
-
-

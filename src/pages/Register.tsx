@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { Box } from "@mui/material";
 
 import { Formik } from "formik";
-import useAuthCall from "../hooks/useAuthCalls";
+import useAuthCall from "../hooks/useAuthCall";
 import RegisterForm, { SignupSchema } from "../components/auth/RegisterForm";
 
 const Register = () => {
