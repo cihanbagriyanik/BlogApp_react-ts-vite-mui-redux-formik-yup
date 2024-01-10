@@ -26,7 +26,7 @@ const LoginForm = (props: FormikProps<FormValues>) => {
   const { values, handleChange, errors, touched, handleBlur } = props;
 
   return (
-    <Form>
+    <Form >
       <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
         <TextField
           label="Email"

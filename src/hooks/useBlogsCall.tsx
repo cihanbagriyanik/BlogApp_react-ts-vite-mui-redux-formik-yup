@@ -58,7 +58,7 @@ const useBlogsCall = () => {
     }
   };
 
-  const removeBlog = async (url: any, id: string) => {
+  const removeBlog = async (url: string, id: string) => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.delete(`${url}/${id}`);

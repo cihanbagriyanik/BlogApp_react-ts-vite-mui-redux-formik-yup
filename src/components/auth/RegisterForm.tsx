@@ -1,4 +1,3 @@
-// import { InputAdornment } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -28,17 +27,6 @@ export const SignupSchema = Yup.object().shape({
     .matches(/[@$!%*?&]+/, "Muss mindestens ein Sonderzeichen enthalten!")
     .required("Requeired!"),
 });
-
-interface FormValues {
-  email: string;
-  password: string;
-  username: string;
-  firstName: string;
-  lastName: string;
-  image?: string;
-  city?: string;
-  bio?: string;
-}
 
 const RegisterForm = (props: FormikProps<FormValues>) => {
   const { values, handleChange, errors, touched, handleBlur, isSubmitting } =
@@ -95,52 +83,23 @@ const RegisterForm = (props: FormikProps<FormValues>) => {
             error={touched.email && Boolean(errors.email)}
           />
 
-          {/* <TextField
-            // label="Image"
-            name="image"
-            id="image"
-            type="file"
-            variant="outlined"
-            value={values.image}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            helperText={touched.image && errors.image}
-            error={touched.image && Boolean(errors.image)}
-            InputLabelProps={
-              {
-                shrink: true,
-                style: { display: 'block' },
-              }
-            }
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  {values.image ? "No file chosen" : "Image"}
-                </InputAdornment>
-              ),
-            }}
-          /> */}
-
           <TextField
             label="Image"
             name="image"
             id="image"
-            type="file"
+            type="text"
             variant="outlined"
             value={values.image}
             onChange={handleChange}
             onBlur={handleBlur}
             helperText={touched.image && errors.image}
             error={touched.image && Boolean(errors.image)}
-            InputLabelProps={{
-              shrink: true,
-            }}
           />
           <TextField
             label="City"
             name="city"
             id="city"
-            type="city"
+            type="text"
             variant="outlined"
             value={values.city}
             onChange={handleChange}
@@ -152,7 +111,7 @@ const RegisterForm = (props: FormikProps<FormValues>) => {
             label="Bio"
             name="bio"
             id="bio"
-            type="bio"
+            type="text"
             variant="outlined"
             value={values.bio}
             onChange={handleChange}

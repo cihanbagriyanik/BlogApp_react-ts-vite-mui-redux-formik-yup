@@ -1,8 +1,18 @@
+import { Container } from "@mui/material";
 
 const Footer = () => {
   return (
-    <div>Footer</div>
-  )
-}
+    <Container
+      sx={{
+        backgroundColor: "red",
+        position: "fixed",
+        bottom: 0,
+        padding: "10px",
+      }}
+    >
+      Footer
+    </Container>
+  );
+};
 
-export default Footer
+export default Footer;

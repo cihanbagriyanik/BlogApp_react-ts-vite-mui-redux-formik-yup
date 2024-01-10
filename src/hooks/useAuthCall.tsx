@@ -18,9 +18,8 @@ const useAuthCall = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { token } = useSelector((state: RootState) => state.auth);
- 
 
-  const register = async (userInfo: string) => {
+  const register = async (userInfo: FormValues) => {
     dispatch(fetchStart());
     try {
       const { data } = await axios.post(`${BASE_URL}users/`, userInfo);
@@ -36,7 +35,8 @@ const useAuthCall = () => {
       );
     }
   };
-  const login = async (userInfo: string) => {
+
+  const login = async (userInfo: { email: string; password: string }) => {
     dispatch(fetchStart());
     try {
       const { data } = await axios.post(`${BASE_URL}auth/login/`, userInfo);

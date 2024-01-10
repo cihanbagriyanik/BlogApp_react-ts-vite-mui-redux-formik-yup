@@ -53,10 +53,10 @@ const Register = () => {
               password: "",
               image: "",
               bio: "",
-              shrink: false,
+              city: "",
             }}
             validationSchema={SignupSchema}
-            onSubmit={(values, actions) => {
+            onSubmit={(values: FormValues, actions) => {
               console.log(values);
               register(values);
               actions.resetForm();
@@ -64,6 +64,7 @@ const Register = () => {
             }}
             component={(props) => <RegisterForm {...props} />}
           ></Formik>
+
           <Box sx={{ textAlign: "center", mt: 2, color: "secondary.main" }}>
             <Link to="/">Already have an account? Sign in</Link>
           </Box>
