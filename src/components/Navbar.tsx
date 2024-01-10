@@ -6,7 +6,6 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
@@ -31,12 +30,15 @@ const Navbar: React.FC = () => {
   ];
 
   const profiles = currentUser
-    ? [
+    ? 
+    [
         { title: "Profile", url: "/blogapp/profile" },
         { title: "My Blogs", url: "/blogapp/myblog" },
         { title: "Logout", url: "/logout" },
       ]
     : [{ title: "Login", url: "/" }];
+
+
 
   React.useEffect(() => {
     // console.log("useEffect is running");
@@ -77,7 +79,7 @@ const Navbar: React.FC = () => {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
+      <Box sx={{ padding: "0 2rem" }}>
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -216,7 +218,7 @@ const Navbar: React.FC = () => {
             </Menu>
           </Box>
         </Toolbar>
-      </Container>
+      </Box>
     </AppBar>
   );
 };

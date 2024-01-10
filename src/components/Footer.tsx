@@ -1,17 +1,19 @@
-import { Container } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const Footer = () => {
   return (
-    <Container
+    <Box
       sx={{
-        backgroundColor: "red",
-        position: "fixed",
-        bottom: 0,
-        padding: "10px",
+        backgroundColor: "#1976d2",
+        width: "100%",
+        padding: "1.5rem",
+        margin: "3rem 0 0",
+
+        display: "inline-block",
       }}
     >
-      Footer
-    </Container>
+      <Typography align="center">Footer</Typography>
+    </Box>
   );
 };
 
