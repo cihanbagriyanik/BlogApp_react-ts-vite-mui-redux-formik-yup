@@ -73,6 +73,18 @@ const useBlogsCall = () => {
     }
   };
 
+  /* -------------------------------------------------------------------------- */
+  // const blogDetail = async (url: string, id: string) => {
+  //   dispatch(fetchStart());
+  //   try {
+  //     const { data } = await axiosWithToken(`${url}/${id}`);
+  //     console.log(data);
+  //     dispatch(getBlogs({ data: data.data, url }));
+  //   } catch (error) {
+  //     dispatch(fetchFail());
+  //   }
+  // };
+  /* -------------------------------------------------------------------------- */
   return { blogsList, createBlog, updateBlog, removeBlog };
 };
 

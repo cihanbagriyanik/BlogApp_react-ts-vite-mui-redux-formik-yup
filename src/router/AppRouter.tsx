@@ -8,7 +8,7 @@ import Register from "../pages/Register";
 import PrivateRouter from "./PrivateRouter";
 
 import Dashboard from "../pages/Dashboard";
-import Detail from "../pages/Detail";
+import BlogDetail from "../pages/BlogDetail";
 import Navbar from "../components/Navbar";
 import About from "../pages/About";
 import NewBlog from "../pages/NewBlog";
@@ -27,7 +27,7 @@ const AppRouter: React.FC = () => {
 
         <Route path="blogapp" element={<PrivateRouter />}>
           <Route index element={<Dashboard />} />
-          <Route path="detail" element={<Detail />} />
+          <Route path="blogdetail" element={<BlogDetail />} />
           <Route path="about" element={<About />} />
           <Route path="newblog" element={<NewBlog />} />
           <Route path="profile" element={<Profile />} />

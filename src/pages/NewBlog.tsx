@@ -26,7 +26,9 @@ const NewBlog = () => {
         component="form"
         // onSubmit={handleSubmit}
       >
-        <Typography>New Blog</Typography>
+        <Typography align="center" variant="h5" color={"#1976d2"}>
+          New Blog
+        </Typography>
         <TextField
           label="Title"
           id="title"

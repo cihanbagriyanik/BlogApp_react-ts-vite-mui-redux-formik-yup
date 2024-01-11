@@ -4,14 +4,12 @@ interface blogsState {
   loading: boolean;
   error: boolean;
   blogs: any;
-  // id: number;
 }
 
 const initialState: blogsState = {
   loading: false,
   error: false,
   blogs: [],
-  // id: 0
 };
 
 const blogsSlice = createSlice({
@@ -35,6 +33,14 @@ const blogsSlice = createSlice({
       state.error = false;
       state.blogs = payload?.data;
     },
+
+    /* -------------------------------------------------------------------------- */
+    // getSingleBlogDetail: (state, { payload }) => {
+    //   state.loading = false;
+    //   state.error = false;
+    //   state.blogs = payload?.data;
+    // },
+    /* -------------------------------------------------------------------------- */
   },
 });
 

@@ -18,7 +18,11 @@ import loadingGif from "../../../public/assets/loading.gif";
 import { RootState } from "../../app/store";
 import { useSelector } from "react-redux";
 
+import { useNavigate } from "react-router-dom";
+
 export default function BlogsCard() {
+  const navigate = useNavigate();
+
   const { blogsList } = useBlogsCall();
 
   const { blogs, loading } = useSelector((state: RootState) => state?.blogs);
@@ -43,16 +47,21 @@ export default function BlogsCard() {
       ) : (
         blogs.map((a: DataValuesTypes) => {
           return (
-            <Grid item key={a._id} xs={12} sm={6} md={4} lg={3}
-            sx={{display:"block"}}
+            <Grid
+              item
+              key={a._id}
+              xs={12}
+              sm={6}
+              md={4}
+              lg={3}
+              sx={{ display: "block" }}
             >
               <Card
                 sx={{
-                  
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-evenly",
-                  
+
                   // width: 400,
                   maxWidth: 400,
                   // height: 450,
@@ -60,24 +69,8 @@ export default function BlogsCard() {
                   maxHeight: 500,
                   padding: ".5rem",
                   margin: "2rem 2rem",
-                
                 }}
               >
-                {/* <CardHeader
-          avatar={
-            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-              R
-            </Avatar>
-          }
-          action={
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
-            </IconButton>
-          }
-          title="Shrimp and Chorizo Paella"
-          subheader="September 14, 2016"
-          
-        /> */}
                 <CardMedia
                   component="img"
                   src=""
@@ -132,7 +125,10 @@ export default function BlogsCard() {
                     </IconButton>
                   </Box>
                   <Box>
-                    <Button sx={{}} variant="contained">
+                    <Button
+                      onClick={() => navigate("blogdetail")}
+                      variant="contained"
+                    >
                       Read More
                     </Button>
                   </Box>
