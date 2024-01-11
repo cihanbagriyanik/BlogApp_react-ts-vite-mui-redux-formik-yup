@@ -1,8 +1,17 @@
 import { useDispatch } from "react-redux";
-import { fetchStart, fetchFail, getBlogs } from "../features/blogsSlice";
+import {
+  fetchStart,
+  fetchFail,
+  getBlogs,
+  getBlogDetail,
+} from "../features/blogsSlice";
 
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 import useAxios from "./useAxios";
+
+/* -------------------------------------------------------------------------- */
+import { useNavigate } from "react-router-dom";
+/* -------------------------------------------------------------------------- */
 
 interface initialValue {
   categoryId: string;
@@ -14,6 +23,9 @@ interface initialValue {
 
 const useBlogsCall = () => {
   const dispatch = useDispatch();
+  /* -------------------------------------------------------------------------- */
+  const navigate = useNavigate();
+  /* -------------------------------------------------------------------------- */
 
   const { axiosWithToken } = useAxios();
 
@@ -74,18 +86,21 @@ const useBlogsCall = () => {
   };
 
   /* -------------------------------------------------------------------------- */
-  // const blogDetail = async (url: string, id: string) => {
-  //   dispatch(fetchStart());
-  //   try {
-  //     const { data } = await axiosWithToken(`${url}/${id}`);
-  //     console.log(data);
-  //     dispatch(getBlogs({ data: data.data, url }));
-  //   } catch (error) {
-  //     dispatch(fetchFail());
-  //   }
-  // };
+  const blogDetail = async (url: string, id: string) => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axiosWithToken(`${url}/${id}`);
+      console.log(data);
+      dispatch(getBlogDetail({ data: data.data, url: `${url}/${id}` }));
+      /* -------------------------------------------------------------------------- */
+      navigate(`/blogdetail/${id}`);
+      /* -------------------------------------------------------------------------- */
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
   /* -------------------------------------------------------------------------- */
-  return { blogsList, createBlog, updateBlog, removeBlog };
+  return { blogsList, createBlog, updateBlog, removeBlog, blogDetail };
 };
 
 export default useBlogsCall;

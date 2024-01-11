@@ -31,6 +31,11 @@ export default function BlogsCard() {
     blogsList("blogs/");
   }, []);
 
+  const handleReadMore = (id: string) => {
+    console.log(id);
+    navigate(`/blogdetail/${id}`);
+  };
+
   return (
     <Grid container spacing={5}>
       {loading ? (
@@ -126,7 +131,7 @@ export default function BlogsCard() {
                   </Box>
                   <Box>
                     <Button
-                      onClick={() => navigate("blogdetail")}
+                      onClick={() => handleReadMore(a._id)}
                       variant="contained"
                     >
                       Read More
