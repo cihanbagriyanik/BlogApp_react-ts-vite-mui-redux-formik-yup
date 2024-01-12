@@ -78,7 +78,7 @@ const useCommentCall = () => {
     dispatch(fetchStart());
     try {
       const { data } = await axiosWithToken(`${url}`);
-      console.log(data);
+      // console.log(data);
       dispatch(getCommentDetail({ data: data.data }));
     } catch (error) {
       dispatch(fetchFail());
