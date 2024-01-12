@@ -8,14 +8,9 @@ import {
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 import useAxios from "./useAxios";
 
-// interface initialValue {
-//     categoryId: string;
-//     title: string;
-//     image: string;
-//     category: string;
-//     content: string;
-//     isPublish: boolean;
-//   }
+interface NewCategoryValues {
+  name: string;
+}
 
 const useCategoryCall = () => {
   const dispatch = useDispatch();
@@ -48,7 +43,11 @@ const useCategoryCall = () => {
     }
   };
 
-  const updateCategory = async (url: string, id: string, body: NewCategoryValues) => {
+  const updateCategory = async (
+    url: string,
+    id: string,
+    body: NewCategoryValues
+  ) => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.put(`${url}/${id}`, body);
@@ -77,17 +76,6 @@ const useCategoryCall = () => {
       );
     }
   };
-
-//   const blogDetail = async (url: string) => {
-//     dispatch(fetchStart());
-//     try {
-//       const { data } = await axiosWithToken(`${url}`);
-//       console.log(data);
-//       dispatch(getBlogDetail({ data: data.data }));
-//     } catch (error) {
-//       dispatch(fetchFail());
-//     }
-//   };
 
   return { categoryList, createCategory, updateCategory, removeCategory };
 };

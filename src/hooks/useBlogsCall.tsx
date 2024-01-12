@@ -9,13 +9,13 @@ import {
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 import useAxios from "./useAxios";
 
-interface initialValue {
-  categoryId: string;
-  title: string;
-  content: string;
-  image: string;
-  isPublish: boolean;
-}
+// interface initialValue {
+//   categoryId: string;
+//   title: string;
+//   content: string;
+//   image: string;
+//   isPublish: boolean;
+// }
 
 const useBlogsCall = () => {
   const dispatch = useDispatch();
@@ -33,10 +33,12 @@ const useBlogsCall = () => {
     }
   };
 
-  const createBlog = async (url: string, body: initialValue) => {
+  const createBlog = async (url: string, body: NewBlogFormValues) => {
     dispatch(fetchStart());
     try {
+      console.log("Before post:", body);
       await axiosWithToken.post(`${url}/`, body);
+      console.log("After post: Blog created successfully");
       blogsList(url);
       toastSuccessNotify("New Blog created");
     } catch (error) {
@@ -48,7 +50,11 @@ const useBlogsCall = () => {
     }
   };
 
-  const updateBlog = async (url: string, id: string, body: initialValue) => {
+  const updateBlog = async (
+    url: string,
+    id: string,
+    body: NewBlogFormValues
+  ) => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.put(`${url}/${id}`, body);

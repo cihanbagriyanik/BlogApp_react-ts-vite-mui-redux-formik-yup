@@ -17,11 +17,11 @@ interface DataValuesTypes {
   createdAt: string;
 }
 
-interface NewCategoryValues {
-  categoryId: string;
+interface NewBlogFormValues {
+  // categoryId: string;
   title: string;
   image: string;
-  category: string;
+  categoryId: string;
   content: string;
   isPublish: boolean;
 }
