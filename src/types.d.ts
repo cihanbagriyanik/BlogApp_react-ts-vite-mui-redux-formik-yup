@@ -1,3 +1,4 @@
+//! type for new user
 interface FormValues {
   username: string;
   firstName: string;
@@ -17,6 +18,7 @@ interface DataValuesTypes {
   createdAt: string;
 }
 
+//! type for new blog 
 interface NewBlogFormValues {
   // categoryId: string;
   title: string;
@@ -24,4 +26,11 @@ interface NewBlogFormValues {
   categoryId: string;
   content: string;
   isPublish: boolean;
+}
+
+//! type for show usesate 
+type ShowState = boolean;
+interface IconProps {
+  show?: ShowState;
+  setShow?: React.Dispatch<React.SetStateAction<ShowState>>;
 }

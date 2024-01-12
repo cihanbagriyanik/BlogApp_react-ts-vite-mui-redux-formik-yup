@@ -1,9 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "../features/authSlice";
-
 import blogsReducer from "../features/blogsSlice";
-
 import categoryReducer from "../features/categorySlice";
+import commentReducer from "../features/commentSlice";
 
 import {
   persistStore,
@@ -29,6 +28,7 @@ const store = configureStore({
     auth: persistedReducer,
     blogs: blogsReducer,
     category: categoryReducer,
+    comment: commentReducer,
   },
 
   middleware: (getDefaultMiddleware: any) =>

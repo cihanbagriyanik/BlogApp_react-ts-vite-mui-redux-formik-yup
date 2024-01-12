@@ -28,7 +28,7 @@ const SignupSchema = Yup.object().shape({
 const NewBlog = () => {
   const { createBlog } = useBlogsCall();
   return (
-    <Container>
+    <Container sx={{ height: "74.1vh" }}>
       <Formik
         initialValues={{
           // categoryId: "",

@@ -35,7 +35,6 @@ const AppRouter: React.FC = () => {
           <Route path="notfound" element={<NotFound />} />
         </Route>
       </Routes>
-      <div style={{ height: "10rem" }}></div>
       <Footer />
     </Router>
   );

@@ -10,13 +10,16 @@ import loadingGif from "../../public/assets/loading.gif";
 import { RootState } from "../app/store";
 import { useSelector } from "react-redux";
 import { blue } from "@mui/material/colors";
-import React from "react";
+import React, { useState } from "react";
 
 import { useParams } from "react-router-dom";
 import useBlogsCall from "../hooks/useBlogsCall";
 import Icons from "../components/blog/Icons";
+import CommentForm from "../components/blog/CommentForm";
 
 const BlogDetail = () => {
+  const [show, setShow] = useState<ShowState>(false);
+
   const { blogDetail } = useBlogsCall();
 
   const { loading, blog } = useSelector((state: RootState) => state?.blogs);
@@ -108,12 +111,17 @@ const BlogDetail = () => {
 
           <Box sx={{ display: "flex", justifyContent: "start", margin: "0" }}>
             <Box sx={{ marginLeft: "5rem" }}>
-              <Icons />
+              <Icons show={show} setShow={setShow} />
             </Box>
             {/* <Box>
               <Button variant="contained">Read More</Button>
             </Box> */}
           </Box>
+          {show && (
+            <>
+              <CommentForm />
+            </>
+          )}
         </Box>
       )}
     </>
