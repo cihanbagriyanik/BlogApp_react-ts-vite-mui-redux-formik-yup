@@ -67,10 +67,10 @@ const BlogDetail = () => {
               sizes="xl"
               aria-label="recipe"
             >
-              {blog?.userId?.firstName[0] + blog?.userId?.lastName[0]}
+              {blog?.userId?.firstName[0] + blog?.userId?.lastName[0] || ""}
             </Avatar>
             <Typography sx={{ marginLeft: "1rem" }} color="text.secondary">
-              {blog?.userId?.firstName + blog?.userId?.lastName}
+              {blog?.userId?.firstName + blog?.userId?.lastName || ""}
               <br />
               Published Date : {new Date(
                 blog.createdAt
@@ -119,7 +119,7 @@ const BlogDetail = () => {
           </Box>
           {show && (
             <>
-              <CommentForm />
+              <CommentForm blog={blog.comments} />
             </>
           )}
         </Box>

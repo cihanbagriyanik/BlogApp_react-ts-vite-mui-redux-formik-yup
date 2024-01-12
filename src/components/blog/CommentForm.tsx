@@ -1,7 +1,11 @@
 import { Box, Button, TextField } from "@mui/material";
 import CommentCard from "./CommentCard";
 
-const CommentForm = () => {
+interface CommentFormProps {
+  blog: Comments[];
+}
+
+const CommentForm: React.FC<CommentFormProps> = ({ blog }) => {
   return (
     <Box
       sx={{
@@ -14,6 +18,7 @@ const CommentForm = () => {
         id="comment"
         placeholder="Add a comment"
         multiline
+        rows={5}
         // fullWidth
         sx={{ marginBottom: "1rem", width: "100%" }}
       />
@@ -21,7 +26,7 @@ const CommentForm = () => {
         <Button variant="contained">Add Comment</Button>
       </Box>
       <Box sx={{ marginTop: "2rem" }}>
-        <CommentCard />
+        <CommentCard blog={blog} />
       </Box>
     </Box>
   );

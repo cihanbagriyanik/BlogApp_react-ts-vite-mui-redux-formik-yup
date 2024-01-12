@@ -34,3 +34,20 @@ interface IconProps {
   show?: ShowState;
   setShow?: React.Dispatch<React.SetStateAction<ShowState>>;
 }
+
+
+interface UserId {
+  _id: string
+  username: string
+  firstName: string
+  lastName: string
+}
+interface Comments {
+  _id: string
+  blogId: string
+  userId: UserId
+  comment: string
+  createdAt: string
+  updatedAt: string
+  __v: number
+}

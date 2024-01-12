@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { fetchStart, fetchFail, getComments } from "../features/commentSlice";
+import { fetchStart, fetchFail, getComments, getCommentDetail } from "../features/commentSlice";
 
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 import useAxios from "./useAxios";
@@ -74,7 +74,24 @@ const useCommentCall = () => {
     }
   };
 
-  return { commentsList, createComment, updateComment, removeComment };
+  const listSingleBlogComments = async (url: string) => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axiosWithToken(`${url}`);
+      console.log(data);
+      dispatch(getCommentDetail({ data: data.data }));
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
+
+  return {
+    commentsList,
+    createComment,
+    updateComment,
+    removeComment,
+    listSingleBlogComments,
+  };
 };
 
 export default useCommentCall;

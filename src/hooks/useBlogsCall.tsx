@@ -26,7 +26,7 @@ const useBlogsCall = () => {
     dispatch(fetchStart());
     try {
       const { data } = await axiosWithToken(`${url}/`);
-      console.log(data);
+      // console.log(data);
       dispatch(getBlogs({ data: data.data, url }));
     } catch (error) {
       dispatch(fetchFail());
@@ -88,7 +88,7 @@ const useBlogsCall = () => {
     dispatch(fetchStart());
     try {
       const { data } = await axiosWithToken(`${url}`);
-      console.log(data);
+      // console.log(data);
       dispatch(getBlogDetail({ data: data.data }));
     } catch (error) {
       dispatch(fetchFail());
