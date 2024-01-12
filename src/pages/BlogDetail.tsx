@@ -141,10 +141,8 @@ const BlogDetail = ({}) => {
             <>
               <Formik
                 initialValues={{
-                  // body: {
                   blogId: `${id}`,
                   comment: "Comment 1",
-                  // },
                 }}
                 onSubmit={(values, actions) => {
                   console.log("Form Values:", values);
