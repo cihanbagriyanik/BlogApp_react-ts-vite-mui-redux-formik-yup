@@ -1,3 +1,5 @@
+import React from "react";
+
 import {
   Box,
   Button,
@@ -8,9 +10,58 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { RootState } from "../app/store";
+import { useSelector } from "react-redux";
 
-const NewBlog = () => {
+import useCategoryCall from "../hooks/useCategoryCall";
+
+import {
+  // Form,
+  FormikProps,
+} from "formik";
+import * as Yup from "yup";
+
+export const SignupSchema = Yup.object().shape({
+  title: Yup.string()
+    .min(3, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Requeired!"),
+  image: Yup.string()
+    .min(3, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Requeired!"),
+  category: Yup.string()
+    .min(3, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Requeired!"),
+  select: Yup.string().required("Requeired!"),
+  content: Yup.string()
+    // .min(3, "It must be at least 8 characters!")
+    .max(1000, "It can be a maximum of 100 characters!")
+    .required("Requeired!"),
+});
+
+const NewBlog = (props: FormikProps<NewCategoryValues>) => {
+  const {
+    values,
+    handleChange,
+    // errors,
+    // touched,
+    handleBlur,
+    isSubmitting,
+  } = props;
+
+  const { categoryList } = useCategoryCall();
+
+  const { categories } = useSelector((state: RootState) => state?.category);
+  console.log(categories);
+
+  React.useEffect(() => {
+    categoryList("categories/");
+  }, []);
+
   return (
+    // <Form>
     <Box
       sx={{
         width: "50%",
@@ -35,18 +86,24 @@ const NewBlog = () => {
           name="title"
           type="text"
           variant="outlined"
-          // value={info?.quantity}
-          // onChange={handleChange}
+          value={values?.title}
+          onBlur={handleBlur}
+          onChange={handleChange}
+          // helperText={touched.title && errors.title}
+          // error={touched.title && Boolean(errors.title)}
           required
         />
         <TextField
           label="Image URL"
-          id="ImageUrl"
-          name="ImageUrl"
+          id="Image"
+          name="Image"
           type="text"
           variant="outlined"
-          // value={info?.quantity}
-          // onChange={handleChange}
+          onBlur={handleBlur}
+          value={values?.image}
+          onChange={handleChange}
+          // helperText={touched.image && errors.image}
+          // error={touched.image && Boolean(errors.image)}
           required
         />
 
@@ -57,14 +114,19 @@ const NewBlog = () => {
           <Select
             label="Category"
             id="category"
-            labelId="demo-simple-select-helper-label"
+            labelId="category"
             type="text"
-
-            // value={age}
-            // onChange={handleChange}
+            onBlur={handleBlur}
+            // error={touched.category && Boolean(errors.category)}
+            value={values?.category}
+            onChange={handleChange}
           >
             <MenuItem>Please choose...</MenuItem>
-            {<MenuItem value={10}>Ten</MenuItem>}
+            {categories.map((x: any) => (
+              <MenuItem key={x._id} value={x.name}>
+                {x.name}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
 
@@ -77,7 +139,11 @@ const NewBlog = () => {
             defaultValue="Please choose..."
             type="text"
             required
-            // onChange={handleChange}
+            onBlur={handleBlur}
+            // value={values?.select}
+            // helperText={touched.select && errors.select}
+            // error={touched.select && Boolean(errors.select)}
+            onChange={handleChange}
           >
             <MenuItem defaultChecked>Please choose...</MenuItem>
             <MenuItem value={"draft"}>Draft</MenuItem>
@@ -97,12 +163,22 @@ const NewBlog = () => {
           multiline
           required
           rows={3.5}
+          onBlur={handleBlur}
+          value={values?.content}
+          // helperText={touched.content && errors.content}
+          // error={touched.content && Boolean(errors.content)}
         />
-        <Button type="submit" variant="contained" size="large">
+        <Button
+          type="submit"
+          variant="contained"
+          size="large"
+          disabled={isSubmitting}
+        >
           New Blog
         </Button>
       </Box>
     </Box>
+    // </Form>
   );
 };
 

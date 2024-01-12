@@ -3,6 +3,8 @@ import authReducer from "../features/authSlice";
 
 import blogsReducer from "../features/blogsSlice";
 
+import categoryReducer from "../features/categorySlice";
+
 import {
   persistStore,
   persistReducer,
@@ -26,6 +28,7 @@ const store = configureStore({
   reducer: {
     auth: persistedReducer,
     blogs: blogsReducer,
+    category: categoryReducer,
   },
 
   middleware: (getDefaultMiddleware: any) =>

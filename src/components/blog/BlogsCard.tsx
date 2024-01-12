@@ -4,12 +4,7 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
-
 import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import AddCommentIcon from "@mui/icons-material/AddComment";
-import VisibilityIcon from "@mui/icons-material/Visibility";
 
 import useBlogsCall from "../../hooks/useBlogsCall";
 import { Box, Button, Grid } from "@mui/material";
@@ -19,8 +14,26 @@ import { RootState } from "../../app/store";
 import { useSelector } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
+import Icons from "./Icons";
 
 export default function BlogsCard() {
+  // const [likeCount, setLikeCount] = React.useState(0);
+  // const [commentCount, setCommentCount] = React.useState(0);
+  // const [viewCount, setViewCount] = React.useState(0);
+
+  // const handleLike = () => {
+  //   setLikeCount((prevCount) => prevCount + 1);
+
+  // };
+
+  // const handleComment = () => {
+  //   setCommentCount((prevCount) => prevCount + 1);
+  // };
+
+  // const handleView = () => {
+  //   setViewCount((prevCount) => prevCount + 1);
+  // };
+
   const navigate = useNavigate();
 
   const { blogsList } = useBlogsCall();
@@ -32,12 +45,16 @@ export default function BlogsCard() {
   }, []);
 
   const handleReadMore = (id: string) => {
-    console.log(id);
-    navigate(`/blogdetail/${id}`);
+    // console.log(id);
+    navigate(`blogdetail/${id}`);
   };
 
   return (
-    <Grid container spacing={5}>
+    <Grid
+      container
+      spacing={0}
+      sx={{ display: "flex", justifyContent: "center" }}
+    >
       {loading ? (
         <img
           src={loadingGif}
@@ -55,25 +72,32 @@ export default function BlogsCard() {
             <Grid
               item
               key={a._id}
-              xs={12}
-              sm={6}
-              md={4}
-              lg={3}
-              sx={{ display: "block" }}
+              // xs={12}
+              sm={12}
+              md={6}
+              lg={4}
+              xl={3}
+              sx={{
+                // display: "block" ,
+                // gap: "1rem",
+                display: "flex",
+                justifyContent: "center",
+              }}
             >
               <Card
                 sx={{
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-evenly",
-
-                  // width: 400,
-                  maxWidth: 400,
-                  // height: 450,
-                  height: "100%",
-                  maxHeight: 500,
-                  padding: ".5rem",
-                  margin: "2rem 2rem",
+                  boxSizing: "border-box",
+                  width: "25rem",
+                  minWidth: "23rem",
+                  maxWidth: "27rem",
+                  height: "30rem",
+                  marginLeft: "2rem",
+                  marginRight: "2rem",
+                  marginTop: "2rem",
+                  padding: "2rem",
                 }}
               >
                 <CardMedia
@@ -119,15 +143,7 @@ export default function BlogsCard() {
                   disableSpacing
                 >
                   <Box>
-                    <IconButton aria-label="add to favorites">
-                      <FavoriteIcon />
-                    </IconButton>
-                    <IconButton aria-label="share">
-                      <AddCommentIcon />
-                    </IconButton>
-                    <IconButton aria-label="share">
-                      <VisibilityIcon />
-                    </IconButton>
+                    <Icons />
                   </Box>
                   <Box>
                     <Button

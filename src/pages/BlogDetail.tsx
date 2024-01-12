@@ -1,34 +1,33 @@
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-
 import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import AddCommentIcon from "@mui/icons-material/AddComment";
-import VisibilityIcon from "@mui/icons-material/Visibility";
 
-import { Avatar, Box, Button, CardHeader } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  // Button
+} from "@mui/material";
 
 import loadingGif from "../../public/assets/loading.gif";
 import { RootState } from "../app/store";
 import { useSelector } from "react-redux";
-import { red } from "@mui/material/colors";
+import { blue } from "@mui/material/colors";
 import React from "react";
-import { getBlogDetail } from "../features/blogsSlice";
+
 import { useParams } from "react-router-dom";
+import useBlogsCall from "../hooks/useBlogsCall";
+import Icons from "../components/blog/Icons";
 
 const BlogDetail = () => {
-  const { loading, blog } = useSelector((state: RootState) => state?.blogs);
-  console.log("Blog Detail:", blog);
+  const { blogDetail } = useBlogsCall();
 
-  const { _id } = useParams();
-  console.log("Blog ID:", _id);
+  const { loading, blog } = useSelector((state: RootState) => state?.blogs);
+  // console.log("Blog Detail:", blog);
+
+  const { id } = useParams();
+  // console.log("Blog ID:", id);
 
   React.useEffect(() => {
-    getBlogDetail(`blogs/${_id}`);
-  }, [_id]);
+    blogDetail(`blogs/${id}`);
+  }, []);
 
   return (
     <>
@@ -44,89 +43,78 @@ const BlogDetail = () => {
           }}
         />
       ) : (
-        blog.map((x: DataValuesTypes) => {
-          return (
-            <Card
+        <Box
+          sx={{
+            padding: "3rem",
+            // display: "flex",
+            // justifyContent: "center",
+            // flexDirection: "column",
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "start",
+              alignItems: "center",
+              margin: "0 3rem 5rem",
+            }}
+          >
+            <Avatar
+              sx={{ bgcolor: blue[500], width: 65, height: 65 }}
+              sizes="xl"
+              aria-label="recipe"
+            >
+              {blog?.userId?.firstName[0] + blog?.userId?.lastName[0]}
+            </Avatar>
+            <Typography sx={{ marginLeft: "1rem" }} color="text.secondary">
+              {blog?.userId?.firstName + blog?.userId?.lastName}
+              <br />
+              Published Date : {new Date(
+                blog.createdAt
+              ).toLocaleDateString()}{" "}
+              {new Date(blog.createdAt).toLocaleTimeString()}
+              <br />
+              Update Date : {new Date(blog.updatedAt).toLocaleDateString()}{" "}
+              {new Date(blog.updatedAt).toLocaleTimeString()}
+            </Typography>
+            <Typography variant="body2" color="text.secondary"></Typography>
+          </Box>
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <img
+              src={blog.image}
+              alt="Paella dish"
+              style={{ width: "50%", height: "auto" }}
+            />
+          </Box>
+
+          <Box
+            sx={{
+              padding: "1rem 3rem",
+            }}
+          >
+            <Typography variant="h6" align="left" sx={{ marginTop: "2rem" }}>
+              {blog.title}
+            </Typography>
+            <Typography
+              variant="body2"
+              color="text.secondary"
               sx={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-evenly",
-                width: 750,
-                height: "100%",
-                padding: ".5rem",
-                margin: "2rem 2rem",
+                padding: "1rem",
               }}
             >
-              <CardHeader
-                avatar={
-                  <Avatar sx={{ bgcolor: red }} aria-label="recipe">
-                    R
-                  </Avatar>
-                }
-                title="Shrimp and Chorizo Paella"
-                subheader="September 14, 2016"
-              />
-              <CardMedia
-                component="img"
-                src=""
-                height="194"
-                image={x.image}
-                alt="Paella dish"
-              />
-              <CardContent
-                sx={{
-                  height: "180px",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Box>
-                  <Typography variant="h6" align="center">
-                    {x.title}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    sx={{
-                      display: "-webkit-box",
-                      WebkitBoxOrient: "vertical",
-                      overflow: "hidden",
-                      WebkitLineClamp: 3,
-                    }}
-                  >
-                    {x.content}
-                  </Typography>
-                </Box>
-                <Typography variant="body2" color="text.secondary">
-                  Published Date : {new Date(x.createdAt).toLocaleDateString()}{" "}
-                  {new Date(x.createdAt).toLocaleTimeString()}
-                </Typography>
-              </CardContent>
-              <CardActions
-                sx={{ display: "flex", justifyContent: "space-between" }}
-                disableSpacing
-              >
-                <Box>
-                  <IconButton aria-label="add to favorites">
-                    <FavoriteIcon />
-                  </IconButton>
-                  <IconButton aria-label="share">
-                    <AddCommentIcon />
-                  </IconButton>
-                  <IconButton aria-label="share">
-                    <VisibilityIcon />
-                  </IconButton>
-                </Box>
-                <Box>
-                  <Button sx={{}} variant="contained">
-                    Read More
-                  </Button>
-                </Box>
-              </CardActions>
-            </Card>
-          );
-        })
+              {blog.content}
+            </Typography>
+          </Box>
+
+          <Box sx={{ display: "flex", justifyContent: "start", margin: "0" }}>
+            <Box sx={{ marginLeft: "5rem" }}>
+              <Icons />
+            </Box>
+            {/* <Box>
+              <Button variant="contained">Read More</Button>
+            </Box> */}
+          </Box>
+        </Box>
       )}
     </>
   );

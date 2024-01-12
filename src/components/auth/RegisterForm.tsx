@@ -19,12 +19,12 @@ export const SignupSchema = Yup.object().shape({
     .required("Requeired!"),
   email: Yup.string().email().required("Requeired!"),
   password: Yup.string()
-    .min(8, "Er muss mindestens 8 Zeichen lang sein!")
-    .max(50, "Er darf maximal 50 Zeichen lang sein!")
-    .matches(/\d+/, "Muss mindestens eine Ziffer enthalten!")
-    .matches(/[A-Z]/, "Muss mindestens einen Großbuchstaben enthalten!")
-    .matches(/[a-z]/, "Muss mindestens einen Kleinbuchstaben enthalten!")
-    .matches(/[@$!%*?&]+/, "Muss mindestens ein Sonderzeichen enthalten!")
+    .min(8, "It must be at least 8 characters!")
+    .max(50, "It can be a maximum of 50 characters!")
+    .matches(/\d+/, "Must contain at least one digit!")
+    .matches(/[A-Z]/, "Must contain at least one capital letter!")
+    .matches(/[a-z]/, "Must contain at least one lowercase letter!")
+    .matches(/[@$!%*?&]+/, "Must contain at least one special character!")
     .required("Requeired!"),
 });
 

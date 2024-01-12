@@ -10,9 +10,9 @@ import { RootState } from "../../app/store";
 
 export const loginScheme = object().shape({
   email: string()
-    .email("Lutfen valid bir email giriniz")
-    .required("Email zorunludur"),
-  password: string().required("password zorunludur"),
+    .email("Please enter a valid email.")
+    .required("Required!"),
+  password: string().required("Required!"),
 });
 
 interface FormValues {

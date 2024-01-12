@@ -9,10 +9,6 @@ import {
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 import useAxios from "./useAxios";
 
-/* -------------------------------------------------------------------------- */
-import { useNavigate } from "react-router-dom";
-/* -------------------------------------------------------------------------- */
-
 interface initialValue {
   categoryId: string;
   title: string;
@@ -23,9 +19,6 @@ interface initialValue {
 
 const useBlogsCall = () => {
   const dispatch = useDispatch();
-  /* -------------------------------------------------------------------------- */
-  const navigate = useNavigate();
-  /* -------------------------------------------------------------------------- */
 
   const { axiosWithToken } = useAxios();
 
@@ -85,21 +78,17 @@ const useBlogsCall = () => {
     }
   };
 
-  /* -------------------------------------------------------------------------- */
-  const blogDetail = async (url: string, id: string) => {
+  const blogDetail = async (url: string) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axiosWithToken(`${url}/${id}`);
+      const { data } = await axiosWithToken(`${url}`);
       console.log(data);
-      dispatch(getBlogDetail({ data: data.data, url: `${url}/${id}` }));
-      /* -------------------------------------------------------------------------- */
-      navigate(`/blogdetail/${id}`);
-      /* -------------------------------------------------------------------------- */
+      dispatch(getBlogDetail({ data: data.data }));
     } catch (error) {
       dispatch(fetchFail());
     }
   };
-  /* -------------------------------------------------------------------------- */
+
   return { blogsList, createBlog, updateBlog, removeBlog, blogDetail };
 };
 

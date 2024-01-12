@@ -1,7 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-/* -------------------------------------------------------------------------- */
-import { useNavigate } from "react-router-dom";
-/* -------------------------------------------------------------------------- */
 
 interface blogsState {
   loading: boolean;
@@ -39,18 +36,11 @@ const blogsSlice = createSlice({
       state.blogs = payload?.data;
     },
 
-    /* -------------------------------------------------------------------------- */
     getBlogDetail: (state, { payload }) => {
       state.loading = false;
       state.error = false;
-      state.blogs = payload?.data;
-
-      /* -------------------------------------------------------------------------- */
-      const navigate = useNavigate();
-      navigate(`/blogdetail/${state.blogs._id}`);
-      /* -------------------------------------------------------------------------- */
+      state.blog = payload?.data;
     },
-    /* -------------------------------------------------------------------------- */
   },
 });
 

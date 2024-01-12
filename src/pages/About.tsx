@@ -16,16 +16,6 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import EmailIcon from "@mui/icons-material/Email";
 
-// import { CardDiv, AboutLi, AboutUl, AboutA, AboutButton } from "./style";
-
-// const icons = [
-//   { icon: <FacebookIcon />, index: "1" },
-//   { icon: <GitHubIcon />, index: "2" },
-//   { icon: <InstagramIcon />, index: "3" },
-//   { icon: <LinkedInIcon />, index: "4" },
-//   { icon: <EmailIcon />, index: "5" },
-// ];
-
 const icons = [
   { icon: <FacebookIcon />, link: "https://www.facebook.com/" },
   { icon: <GitHubIcon />, link: "https://github.com/" },
@@ -36,7 +26,7 @@ const icons = [
 
 const About: React.FC = () => {
   return (
-    <Box>
+    <Box sx={{ height: "70vh" }}>
       <Box sx={{ display: "flex", justifyContent: "center", marginTop: 5 }}>
         <Card sx={{ p: 3, py: 4, maxWidth: 600 }}>
           <Box sx={{ textAlign: "center" }}>

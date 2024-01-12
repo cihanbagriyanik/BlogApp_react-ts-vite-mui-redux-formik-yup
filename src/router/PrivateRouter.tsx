@@ -6,7 +6,7 @@ import { RootState } from "../app/store";
 const PrivateRouter: React.FC = () => {
   const { currentUser } = useSelector((state: RootState) => state.auth);
 
-  return currentUser ? <Outlet /> : <Navigate to="/" />;
+  return currentUser ? <Outlet /> : <Navigate to="/login" />;
 };
 
 export default PrivateRouter;

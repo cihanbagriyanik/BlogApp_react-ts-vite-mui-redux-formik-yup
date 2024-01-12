@@ -22,12 +22,12 @@ const AppRouter: React.FC = () => {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Dashboard />} />
+        <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
 
-        <Route path="blogapp" element={<PrivateRouter />}>
-          <Route index element={<Dashboard />} />
-          <Route path="blogdetail" element={<BlogDetail />} />
+        <Route path="" element={<PrivateRouter />}>
+          <Route path="blogdetail/:id" element={<BlogDetail />} />
           <Route path="about" element={<About />} />
           <Route path="newblog" element={<NewBlog />} />
           <Route path="profile" element={<Profile />} />
@@ -35,6 +35,7 @@ const AppRouter: React.FC = () => {
           <Route path="notfound" element={<NotFound />} />
         </Route>
       </Routes>
+      <div style={{ height: "10rem" }}></div>
       <Footer />
     </Router>
   );

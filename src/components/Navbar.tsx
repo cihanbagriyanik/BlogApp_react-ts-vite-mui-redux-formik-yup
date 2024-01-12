@@ -24,19 +24,19 @@ const Navbar: React.FC = () => {
   const { logOut } = useAuthCall();
 
   const pages = [
-    { title: "Dashboard", url: "/blogapp" },
-    { title: "New Blog", url: "/blogapp/newblog" },
-    { title: "About", url: "/blogapp/about" },
+    { title: "Dashboard", url: "/" },
+    { title: "New Blog", url: "/newblog" },
+    { title: "About", url: "/about" },
   ];
 
   const profiles = currentUser
     ? 
     [
-        { title: "Profile", url: "/blogapp/profile" },
-        { title: "My Blogs", url: "/blogapp/myblog" },
+        { title: "Profile", url: "/profile" },
+        { title: "My Blogs", url: "/myblog" },
         { title: "Logout", url: "/logout" },
       ]
-    : [{ title: "Login", url: "/" }];
+    : [{ title: "Login", url: "/login" }];
 
 
 
@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
     // console.log("window.location.pathname:", window.location.pathname);
     if (currentUser && window.location.pathname === "/") {
       // console.log("if is runnig");
-      navigate("/blogapp");
+      navigate("/");
     }
   }, [currentUser]);
 

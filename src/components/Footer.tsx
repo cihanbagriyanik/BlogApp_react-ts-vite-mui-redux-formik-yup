@@ -6,13 +6,20 @@ const Footer = () => {
       sx={{
         backgroundColor: "#1976d2",
         width: "100%",
-        padding: "1.5rem",
+        padding: ".5rem",
         margin: "3rem 0 0",
-
+        // position: "fixed",
+        bottom: "0",
         display: "inline-block",
+        color: "white",
       }}
     >
-      <Typography align="center">Footer</Typography>
+      <Typography align="center">
+        Developed by Cihan Bagriyanik <br />
+        {"<Cihan/>"} Blog App &copy; Copyright {new Date().getFullYear()}
+        <br />
+        All Rights Reserved.
+      </Typography>
     </Box>
   );
 };
