@@ -1,10 +1,9 @@
 import React from "react";
 import { Box, Button, TextField } from "@mui/material";
 import CommentCard from "./CommentCard";
-import { Form, FormikHelpers } from "formik";
 
 /* -------------------------------------------------------------------------- */
-import useCommentCall from "../../hooks/useCommentCall";
+// import useCommentCall from "../../hooks/useCommentCall";
 // import { RootState } from "../../app/store";
 // import { useSelector } from "react-redux";
 /* -------------------------------------------------------------------------- */
@@ -21,24 +20,15 @@ const CommentForm: React.FC<CommentFormProps> = ({ blog }) => {
   // React.useEffect(() => {
   //   createComment("comments", values);
   // }, []);
+  // const { createComment } = useCommentCall();
   /* -------------------------------------------------------------------------- */
-  const { createComment } = useCommentCall();
 
-  const handleSubmit = (
-    values: NewCommentValues,
-    actions: FormikHelpers<NewCommentValues>
-  ) => {
-    
-      createComment("comments", values);
-   
-    // Burada form gönderme işlemlerinizi yapabilirsiniz
-    // Örneğin: dispatch(createComment(values))
-    console.log("Form Values:", values);
-    actions.resetForm();
-  };
+  const handleSubmit = () => {};
 
   return (
-    <Form
+    <Box
+      onSubmit={handleSubmit}
+      component="form"
       // onSubmit={handleSubmit}
       style={{
         width: "85%",
@@ -62,7 +52,7 @@ const CommentForm: React.FC<CommentFormProps> = ({ blog }) => {
       <Box sx={{ marginTop: "2rem" }}>
         <CommentCard blog={blog} />
       </Box>
-    </Form>
+    </Box>
   );
 };
 

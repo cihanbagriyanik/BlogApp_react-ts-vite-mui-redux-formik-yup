@@ -16,11 +16,10 @@ import { useParams } from "react-router-dom";
 import useBlogsCall from "../hooks/useBlogsCall";
 import Icons from "../components/blog/Icons";
 import CommentForm from "../components/blog/CommentForm";
-import { Formik } from "formik";
 
 /* -------------------------------------------------------------------------- */
 //! Create Comment
-import useCommentCall from "../hooks/useCommentCall";
+// import useCommentCall from "../hooks/useCommentCall";
 /* -------------------------------------------------------------------------- */
 
 const BlogDetail = ({}) => {
@@ -40,7 +39,7 @@ const BlogDetail = ({}) => {
 
   //! Create Comment
   /* -------------------------------------------------------------------------- */
-  const { createComment } = useCommentCall();
+  // const { createComment } = useCommentCall();
   // const { comment } = useSelector((state: RootState) => state?.comment);
   // console.log(comment);
   // React.useEffect(() => {
@@ -139,22 +138,7 @@ const BlogDetail = ({}) => {
           </Box>
           {show && (
             <>
-              <Formik
-                initialValues={{
-                  blogId: `${id}`,
-                  comment: "Comment 1",
-                }}
-                onSubmit={(values, actions) => {
-                  console.log("Form Values:", values);
-                  console.log("Formik Actions:", actions);
-                  createComment("comments", values);
-                  actions.resetForm();
-                  actions.setSubmitting(false);
-                }}
-                component={(props) => (
-                  <CommentForm blog={blog.comments} {...props} />
-                )}
-              ></Formik>
+              <CommentForm blog={blog.comments} />
             </>
           )}
         </Box>
