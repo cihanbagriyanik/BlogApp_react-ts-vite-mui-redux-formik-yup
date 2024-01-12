@@ -51,3 +51,9 @@ interface Comments {
   updatedAt: string
   __v: number
 }
+
+interface NewCommentValues {
+  blogId: string,
+  comment: string,
+}
+

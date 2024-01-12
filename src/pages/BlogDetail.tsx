@@ -16,8 +16,14 @@ import { useParams } from "react-router-dom";
 import useBlogsCall from "../hooks/useBlogsCall";
 import Icons from "../components/blog/Icons";
 import CommentForm from "../components/blog/CommentForm";
+import { Formik } from "formik";
 
-const BlogDetail = () => {
+/* -------------------------------------------------------------------------- */
+//! Create Comment
+import useCommentCall from "../hooks/useCommentCall";
+/* -------------------------------------------------------------------------- */
+
+const BlogDetail = ({}) => {
   const [show, setShow] = useState<ShowState>(false);
 
   const { blogDetail } = useBlogsCall();
@@ -31,6 +37,20 @@ const BlogDetail = () => {
   React.useEffect(() => {
     blogDetail(`blogs/${id}`);
   }, []);
+
+  //! Create Comment
+  /* -------------------------------------------------------------------------- */
+  const { createComment } = useCommentCall();
+  // const { comment } = useSelector((state: RootState) => state?.comment);
+  // console.log(comment);
+  // React.useEffect(() => {
+  //   const newComments: NewCommentValues = {
+  //     blogId: "",
+  //     comment: "",
+  //   };
+  //   createComment("comments/", newComments);
+  // }, []);
+  /* -------------------------------------------------------------------------- */
 
   return (
     <>
@@ -119,7 +139,24 @@ const BlogDetail = () => {
           </Box>
           {show && (
             <>
-              <CommentForm blog={blog.comments} />
+              <Formik
+                initialValues={{
+                  // body: {
+                  blogId: `${id}`,
+                  comment: "Comment 1",
+                  // },
+                }}
+                onSubmit={(values, actions) => {
+                  console.log("Form Values:", values);
+                  console.log("Formik Actions:", actions);
+                  createComment("comments", values);
+                  actions.resetForm();
+                  actions.setSubmitting(false);
+                }}
+                component={(props) => (
+                  <CommentForm blog={blog.comments} {...props} />
+                )}
+              ></Formik>
             </>
           )}
         </Box>
