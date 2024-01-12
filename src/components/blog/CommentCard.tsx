@@ -21,7 +21,7 @@ interface CommentFormProps {
 const CommentCard: React.FC<CommentFormProps> = ({ blog }) => {
   console.log(blog);
 
-  //!Comment icin
+  //! BlogComment Listing for
   /* -------------------------------------------------------------------------- */
   const { listSingleBlogComments } = useCommentCall();
   const { comment } = useSelector((state: RootState) => state?.comment);
