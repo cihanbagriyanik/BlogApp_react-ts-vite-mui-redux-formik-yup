@@ -94,13 +94,8 @@ const UpdateModal = ({ blog }: { blog: NewBlogFormValues }) => {
         </Button>
       </Box>
 
-      {/* //! Delete Modal */}
-      <Modal
-        open={deleteOpen}
-        onClose={handleDeleteClose}
-        // aria-labelledby="modal-modal-title"
-        // aria-describedby="modal-modal-description"
-      >
+      {/*//! Delete Modal */}
+      <Modal open={deleteOpen} onClose={handleDeleteClose}>
         <Box sx={style}>
           <Typography
             id="modal-modal-title"
@@ -139,158 +134,151 @@ const UpdateModal = ({ blog }: { blog: NewBlogFormValues }) => {
       </Modal>
 
       {/* //!Update Modal */}
-      <Modal
-        open={updateOpen}
-        onClose={handleUpdateClose}
-        // aria-labelledby="modal-modal-title"
-        // aria-describedby="modal-modal-description"
-      >
-        <Formik
-          initialValues={{
-            // categoryId: "",
-            title: blog.title || "",
-            image: blog.image || "",
-            categoryId: blog.categoryId || "",
-            content: blog.content || "",
-            isPublish: blog.isPublish || false,
-          }}
-          onSubmit={(values: NewBlogFormValues, actions) => {
-            console.log("Form Values:", values);
-            console.log("Formik Actions:", actions);
-            updateBlog("blogs", id, values);
-
-            actions.resetForm();
-            actions.setSubmitting(false);
-          }}
-          validationSchema={SignupSchema}
-        >
-          {({
-            values,
-            handleChange,
-            errors,
-            touched,
-            handleBlur,
-            isSubmitting,
-            handleSubmit,
-          }: FormikProps<NewBlogFormValues>) => (
-            <Form onSubmit={handleSubmit}>
-              <Box sx={style}>
-                <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                  <Typography align="center" variant="h5" color={"#1976d2"}>
-                    New Blog
-                  </Typography>
-
-                  <TextField
-                    label="Title"
-                    id="title"
-                    name="title"
-                    type="text"
-                    variant="outlined"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    value={values?.title || ""}
-                    helperText={touched.title && errors.title}
-                    error={touched.title && Boolean(errors.title)}
-                    required
-                  />
-
-                  <TextField
-                    label="Image URL"
-                    id="image"
-                    name="image"
-                    type="text"
-                    variant="outlined"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    value={values?.image || ""}
-                    helperText={touched.image && errors.image}
-                    error={touched.image && Boolean(errors.image)}
-                    required
-                  />
-
-                  <FormControl>
-                    <InputLabel id="categoryId" required>
-                      Category
-                    </InputLabel>
-                    <Select
-                      label="Category"
-                      id="categoryId"
-                      name="categoryId"
-                      labelId="categoryId"
-                      //   type="text"
-                      variant="outlined"
-                      onBlur={handleBlur}
-                      onChange={handleChange}
-                      value={values?.categoryId || ""}
-                      //   helperText={touched.image && errors.image}
-                      error={touched.categoryId && Boolean(errors.categoryId)}
-                      required
-                    >
-                      <MenuItem>Please choose...</MenuItem>
-                      {categories.map((x: any) => (
-                        <MenuItem key={x._id} value={x._id}>
-                          {x.name}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-
-                  <FormControl>
-                    <InputLabel id="isPublish" required>
-                      Select
-                    </InputLabel>
-                    <Select
-                      label="Select"
-                      id="isPublish"
-                      name="isPublish"
-                      labelId="isPublish"
-                      //   type="text"
-                      variant="outlined"
-                      onBlur={handleBlur}
-                      onChange={handleChange}
-                      value={values?.isPublish || ""}
-                      //   helperText={touched.isPublish && errors.isPublish}
-                      error={touched.isPublish && Boolean(errors.isPublish)}
-                      required
-                    >
-                      <MenuItem>Please choose...</MenuItem>
-                      {select.map((x: any) => (
-                        <MenuItem key={x.id} value={x.value}>
-                          {x.name}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-
-                  <TextField
-                    label="Content"
-                    id="content"
-                    placeholder="Content"
-                    type="text"
-                    variant="outlined"
-                    multiline
-                    rows={3.5}
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    value={values?.content || ""}
-                    helperText={touched.content && errors.content}
-                    error={touched.content && Boolean(errors.content)}
-                    required
-                  />
-
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    size="large"
-                    disabled={isSubmitting}
+      <Modal open={updateOpen} onClose={handleUpdateClose}>
+        <Box>
+          <Formik
+            initialValues={{
+              title: blog.title || "",
+              image: blog.image || "",
+              categoryId: blog.categoryId || "",
+              content: blog.content || "",
+              isPublish: blog.isPublish || false,
+            }}
+            onSubmit={(values: NewBlogFormValues, actions) => {
+              console.log("Form Values:", values);
+              console.log("Formik Actions:", actions);
+              updateBlog("blogs", id, values);
+              actions.resetForm();
+              actions.setSubmitting(false);
+            }}
+            validationSchema={SignupSchema}
+          >
+            {({
+              values,
+              handleChange,
+              errors,
+              touched,
+              handleBlur,
+              isSubmitting,
+              handleSubmit,
+            }: FormikProps<NewBlogFormValues>) => (
+              <Form onSubmit={handleSubmit}>
+                <Box sx={style}>
+                  <Box
+                    sx={{ display: "flex", flexDirection: "column", gap: 2 }}
                   >
-                    Update Blog
-                  </Button>
+                    <Typography align="center" variant="h5" color={"#1976d2"}>
+                      New Blog
+                    </Typography>
+
+                    <TextField
+                      label="Title"
+                      id="title"
+                      name="title"
+                      type="text"
+                      variant="outlined"
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      value={values?.title || ""}
+                      helperText={touched.title && errors.title}
+                      error={touched.title && Boolean(errors.title)}
+                      required
+                    />
+
+                    <TextField
+                      label="Image URL"
+                      id="image"
+                      name="image"
+                      type="text"
+                      variant="outlined"
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      value={values?.image || ""}
+                      helperText={touched.image && errors.image}
+                      error={touched.image && Boolean(errors.image)}
+                      required
+                    />
+
+                    <FormControl>
+                      <InputLabel id="categoryId" required>
+                        Category
+                      </InputLabel>
+                      <Select
+                        label="Category"
+                        id="categoryId"
+                        name="categoryId"
+                        labelId="categoryId"
+                        variant="outlined"
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        value={values?.categoryId || ""}
+                        error={touched.categoryId && Boolean(errors.categoryId)}
+                        required
+                      >
+                        <MenuItem>Please choose...</MenuItem>
+                        {categories.map((x: any) => (
+                          <MenuItem key={x._id} value={x._id}>
+                            {x.name}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+
+                    <FormControl>
+                      <InputLabel id="isPublish" required>
+                        Select
+                      </InputLabel>
+                      <Select
+                        label="Select"
+                        id="isPublish"
+                        name="isPublish"
+                        labelId="isPublish"
+                        variant="outlined"
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        value={values?.isPublish || ""}
+                        error={touched.isPublish && Boolean(errors.isPublish)}
+                        required
+                      >
+                        <MenuItem>Please choose...</MenuItem>
+                        {select.map((x: any) => (
+                          <MenuItem key={x.id} value={x.value}>
+                            {x.name}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+
+                    <TextField
+                      label="Content"
+                      id="content"
+                      placeholder="Content"
+                      type="text"
+                      variant="outlined"
+                      multiline
+                      rows={3.5}
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      value={values?.content || ""}
+                      helperText={touched.content && errors.content}
+                      error={touched.content && Boolean(errors.content)}
+                      required
+                    />
+
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      size="large"
+                      disabled={isSubmitting}
+                    >
+                      Update Blog
+                    </Button>
+                  </Box>
                 </Box>
-              </Box>
-            </Form>
-          )}
-        </Formik>
+              </Form>
+            )}
+          </Formik>
+        </Box>
       </Modal>
     </>
   );
