@@ -79,14 +79,13 @@ const useAuthCall = () => {
   const getSingleUser = async (id: string) => {
     dispatch(fetchStart());
     try {
-      const { token } = useSelector((state: RootState) => state.auth);
       const { data } = await axios.get(`${BASE_URL}users/${id}`, {
         headers: {
           Authorization: `Token ${token}`,
         },
       });
       dispatch(getUser(data));
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       dispatch(fetchFail());
       console.log(error);
