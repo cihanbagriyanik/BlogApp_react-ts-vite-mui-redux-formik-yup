@@ -56,9 +56,9 @@ const authSlice = createSlice({
 
     getUser(state, { payload }) {
       state.loading = false;
-      state.currentUser = payload?.data?.username;
-      state.isAdmin = payload?.isAdmin;
       state.token = payload?.token;
+      state.currentUser = payload?.user?.username;
+      state.isAdmin = payload?.user?.isAdmin;
       state.user = payload?.data;
     },
   },
