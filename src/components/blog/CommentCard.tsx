@@ -7,29 +7,16 @@ import {
   Typography,
 } from "@mui/material";
 import { blue } from "@mui/material/colors";
-
-/* -------------------------------------------------------------------------- */
 import useCommentCall from "../../hooks/useCommentCall";
-import { RootState } from "../../app/store";
-import { useSelector } from "react-redux";
-/* -------------------------------------------------------------------------- */
-
-interface CommentFormProps {
-  blog: Comments[];
-}
 
 const CommentCard: React.FC<CommentFormProps> = ({ blog }) => {
-  console.log(blog);
+  // console.log(blog);
 
-  //! BlogComment Listing for
-  /* -------------------------------------------------------------------------- */
+  //! Comment for Blog Listing
   const { listSingleBlogComments } = useCommentCall();
-  const { comment } = useSelector((state: RootState) => state?.comment);
-  console.log(comment);
   React.useEffect(() => {
     listSingleBlogComments("comments");
   }, []);
-  /* -------------------------------------------------------------------------- */
 
   return (
     <>

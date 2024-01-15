@@ -1,11 +1,17 @@
 import { useDispatch } from "react-redux";
-import { fetchStart, fetchFail, getComments, getCommentDetail } from "../features/commentSlice";
+import {
+  fetchStart,
+  fetchFail,
+  getComments,
+  getCommentDetail,
+} from "../features/commentSlice";
 
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 import useAxios from "./useAxios";
+import useBlogsCall from "./useBlogsCall";
 
 interface NewCommentValues {
-  blogId: string;
+  blogId: string | undefined;
   comment: string;
 }
 
@@ -13,7 +19,7 @@ const useCommentCall = () => {
   const dispatch = useDispatch();
 
   const { axiosWithToken } = useAxios();
-
+  const { blogDetail } = useBlogsCall();
   const commentsList = async (url: string) => {
     dispatch(fetchStart());
     try {
@@ -29,7 +35,7 @@ const useCommentCall = () => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.post(`${url}/`, body);
-      getComments(url);
+      blogDetail(`blogs/${body.blogId}`);
       toastSuccessNotify("New Comment created");
     } catch (error) {
       dispatch(fetchFail());

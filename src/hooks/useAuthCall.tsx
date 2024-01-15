@@ -5,6 +5,7 @@ import {
   registerSuccess,
   loginSuccess,
   logOutSuccess,
+  getUser,
 } from "../features/authSlice";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -75,7 +76,24 @@ const useAuthCall = () => {
     }
   };
 
-  return { register, login, logOut };
+  const getSingleUser = async (id: string) => {
+    dispatch(fetchStart());
+    try {
+      const { token } = useSelector((state: RootState) => state.auth);
+      const { data } = await axios.get(`${BASE_URL}users/${id}`, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+      dispatch(getUser(data));
+      console.log(data);
+    } catch (error) {
+      dispatch(fetchFail());
+      console.log(error);
+    }
+  };
+
+  return { register, login, logOut, getSingleUser };
 };
 
 export default useAuthCall;

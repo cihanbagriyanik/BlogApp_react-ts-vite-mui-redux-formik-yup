@@ -9,14 +9,6 @@ import {
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 import useAxios from "./useAxios";
 
-// interface initialValue {
-//   categoryId: string;
-//   title: string;
-//   content: string;
-//   image: string;
-//   isPublish: boolean;
-// }
-
 const useBlogsCall = () => {
   const dispatch = useDispatch();
 
@@ -52,7 +44,7 @@ const useBlogsCall = () => {
 
   const updateBlog = async (
     url: string,
-    id: string,
+    id: string | undefined,
     body: NewBlogFormValues
   ) => {
     dispatch(fetchStart());

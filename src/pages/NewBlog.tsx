@@ -13,7 +13,7 @@ const SignupSchema = Yup.object().shape({
     .required("Required!"),
   image: Yup.string()
     .min(3, "Too Short!")
-    .max(50, "Too Long!")
+    .max(500, "Too Long!")
     .required("Required!"),
   categoryId: Yup.string()
     .min(3, "Too Short!")
@@ -21,7 +21,7 @@ const SignupSchema = Yup.object().shape({
     .required("Required!"),
   isPublish: Yup.string().required("Required!"),
   content: Yup.string()
-    .max(1000, "Maximum 1000 characters allowed!")
+    .max(5000, "Maximum 5000 characters allowed!")
     .required("Required!"),
 });
 

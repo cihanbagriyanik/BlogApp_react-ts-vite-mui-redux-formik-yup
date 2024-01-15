@@ -6,14 +6,16 @@ interface authState {
   currentUser: string;
   isAdmin: boolean;
   token: string;
+  user: string | unknown;
 }
 
 const initialState: authState = {
   loading: false,
   error: false,
-  isAdmin:false,
+  isAdmin: false,
   currentUser: "",
-  token:""
+  token: "",
+  user: {},
 };
 
 const authSlice = createSlice({
@@ -51,6 +53,14 @@ const authSlice = createSlice({
       state.isAdmin = false;
       state.token = "";
     },
+
+    getUser(state, { payload }) {
+      state.loading = false;
+      state.currentUser = payload?.data?.username;
+      state.isAdmin = payload?.isAdmin;
+      state.token = payload?.token;
+      state.user = payload?.data;
+    },
   },
 });
 
@@ -60,5 +70,6 @@ export const {
   registerSuccess,
   loginSuccess,
   logOutSuccess,
+  getUser,
 } = authSlice.actions;
 export default authSlice.reducer;

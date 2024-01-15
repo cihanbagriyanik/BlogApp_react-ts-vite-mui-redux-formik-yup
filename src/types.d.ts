@@ -18,9 +18,8 @@ interface DataValuesTypes {
   createdAt: string;
 }
 
-//! type for new blog 
+//! type for new blog
 interface NewBlogFormValues {
-  // categoryId: string;
   title: string;
   image: string;
   categoryId: string;
@@ -28,32 +27,32 @@ interface NewBlogFormValues {
   isPublish: boolean;
 }
 
-//! type for show usesate 
+//! type for show usesate
 type ShowState = boolean;
 interface IconProps {
   show?: ShowState;
   setShow?: React.Dispatch<React.SetStateAction<ShowState>>;
 }
 
-
 interface UserId {
-  _id: string
-  username: string
-  firstName: string
-  lastName: string
+  _id: string;
+  username: string;
+  firstName: string;
+  lastName: string;
 }
 interface Comments {
-  _id: string
-  blogId: string
-  userId: UserId
-  comment: string
-  createdAt: string
-  updatedAt: string
-  __v: number
+  _id: string;
+  blogId: string;
+  userId: UserId;
+  comment: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
 }
 
-interface NewCommentValues {
-  blogId: string,
-  comment: string,
+
+interface CommentFormProps {
+  blog: Comments[];
+  id?: string | undefined;
 }
 

@@ -1,38 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Button, TextField } from "@mui/material";
 import CommentCard from "./CommentCard";
+import useCommentCall from "../../hooks/useCommentCall";
 
-/* -------------------------------------------------------------------------- */
-// import useCommentCall from "../../hooks/useCommentCall";
-// import { RootState } from "../../app/store";
-// import { useSelector } from "react-redux";
-/* -------------------------------------------------------------------------- */
+const CommentForm: React.FC<CommentFormProps> = ({ blog, id }) => {
+  const { createComment } = useCommentCall();
 
-interface CommentFormProps {
-  blog: Comments[];
-}
-
-const CommentForm: React.FC<CommentFormProps> = ({ blog }) => {
-  //!Comment icin
-  /* -------------------------------------------------------------------------- */
-  // const { comment } = useSelector((state: RootState) => state?.comment);
-  // console.log(comment);
-  // React.useEffect(() => {
-  //   createComment("comments", values);
-  // }, []);
-  // const { createComment } = useCommentCall();
-  /* -------------------------------------------------------------------------- */
-
-  const handleSubmit = () => {};
+  //! Write commend and see on screen after submit
+  const [comment, setComment] = useState("");
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    createComment("comments", { blogId: id, comment });
+  };
 
   return (
     <Box
       onSubmit={handleSubmit}
       component="form"
-      // onSubmit={handleSubmit}
       style={{
         width: "85%",
-        margin: ".5rem 3.8rem",
+        margin: "2rem 3.8rem",
       }}
     >
       <TextField
@@ -41,6 +28,8 @@ const CommentForm: React.FC<CommentFormProps> = ({ blog }) => {
         placeholder="Add a comment"
         multiline
         rows={5}
+        value={comment}
+        onChange={(e) => setComment(e.target.value)}
         // fullWidth
         sx={{ marginBottom: "1rem", width: "100%" }}
       />
