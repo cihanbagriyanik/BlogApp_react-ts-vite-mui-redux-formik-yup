@@ -6,7 +6,7 @@ interface authState {
   currentUser: string;
   isAdmin: boolean;
   token: string;
-  user: string | unknown;
+  user: string | any;
 }
 
 const initialState: authState = {

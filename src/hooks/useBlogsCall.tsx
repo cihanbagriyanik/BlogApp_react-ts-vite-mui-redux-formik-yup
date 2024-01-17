@@ -17,7 +17,7 @@ const useBlogsCall = () => {
   const blogsList = async (url: string) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axiosWithToken(`${url}/`);
+      const { data } = await axiosWithToken(`${url}`);
       // console.log(data);
       dispatch(getBlogs({ data: data.data, url }));
     } catch (error) {
@@ -47,10 +47,12 @@ const useBlogsCall = () => {
     id: string | undefined,
     body: NewBlogFormValues
   ) => {
+    console.log(body);
     dispatch(fetchStart());
     try {
       await axiosWithToken.put(`${url}/${id}`, body);
-      blogsList(url);
+      // blogsList(url);
+      blogDetail(`${url}/${id}`);
       toastSuccessNotify("Blog updated");
     } catch (error) {
       dispatch(fetchFail());

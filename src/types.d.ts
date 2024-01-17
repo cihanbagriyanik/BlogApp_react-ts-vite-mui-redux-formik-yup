@@ -18,11 +18,18 @@ interface DataValuesTypes {
   createdAt: string;
 }
 
-//! type for new blog
+//! type for new blog and updateBlog
+interface category {
+  createdAt: string;
+  name: string;
+  updatedAt: string;
+  __v: number;
+  _id: string;
+}
 interface NewBlogFormValues {
   title: string;
   image: string;
-  categoryId: string;
+  categoryId: category | any; //! **************/
   content: string;
   isPublish: boolean;
 }
@@ -50,9 +57,7 @@ interface Comments {
   __v: number;
 }
 
-
 interface CommentFormProps {
   blog: Comments[];
   id?: string | undefined;
 }
-

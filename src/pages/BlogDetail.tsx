@@ -15,6 +15,9 @@ import UpdateModal from "../components/blog/UpdateModal";
 const BlogDetail = () => {
   const [show, setShow] = useState<ShowState>(false);
 
+  const { user } = useSelector((state: RootState) => state?.auth);
+  // console.log(user);
+
   const { blogDetail } = useBlogsCall();
 
   const { loading, blog } = useSelector((state: RootState) => state?.blogs);
@@ -107,13 +110,7 @@ const BlogDetail = () => {
             </Box>
           </Box>
 
-          {
-            //! ********************************************************
-
-            <UpdateModal blog={blog} />
-
-            // ! ********************************************************
-          }
+          {user?._id == blog?.userId?._id && <UpdateModal blog={blog} />}
 
           {show && (
             <>

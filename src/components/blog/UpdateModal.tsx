@@ -55,6 +55,8 @@ const select = [
 ];
 
 const UpdateModal = ({ blog }: { blog: NewBlogFormValues }) => {
+  // const { removeBlog } = useBlogsCall();
+
   //! Update Modal
   const [updateOpen, setUpdateOpen] = React.useState(false);
   const handleUpdateOpen = () => setUpdateOpen(true);
@@ -74,6 +76,8 @@ const UpdateModal = ({ blog }: { blog: NewBlogFormValues }) => {
   React.useEffect(() => {
     categoryList("categories/");
   }, []);
+
+  console.log("Blog*****", blog);
 
   return (
     <>
@@ -117,6 +121,7 @@ const UpdateModal = ({ blog }: { blog: NewBlogFormValues }) => {
           >
             <Button
               onClick={handleDeleteClose}
+              // onClick={() => removeBlog("blogs/", blog._id)}
               variant="contained"
               color="primary"
             >
@@ -140,7 +145,7 @@ const UpdateModal = ({ blog }: { blog: NewBlogFormValues }) => {
             initialValues={{
               title: blog.title || "",
               image: blog.image || "",
-              categoryId: blog.categoryId || "",
+              categoryId: blog?.categoryId?._id || "",
               content: blog.content || "",
               isPublish: blog.isPublish || false,
             }}
@@ -168,7 +173,7 @@ const UpdateModal = ({ blog }: { blog: NewBlogFormValues }) => {
                     sx={{ display: "flex", flexDirection: "column", gap: 2 }}
                   >
                     <Typography align="center" variant="h5" color={"#1976d2"}>
-                      New Blog
+                      Update Blog
                     </Typography>
 
                     <TextField

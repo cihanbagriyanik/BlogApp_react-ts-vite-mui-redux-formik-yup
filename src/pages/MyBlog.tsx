@@ -26,13 +26,15 @@ export default function MyBlog() {
   const { blogsList } = useBlogsCall();
   const { blogs, loading } = useSelector((state: RootState) => state?.blogs);
 
+  const { user } = useSelector((state: RootState) => state?.auth);
+
   React.useEffect(() => {
-    blogsList("blogs/");
+    blogsList(`blogs/?author=${user._id}`);
   }, []);
 
   const handleReadMore = (id: string) => {
     // console.log(id);
-    navigate(`blogdetail/${id}`);
+    navigate(`/blogdetail/${id}`);
   };
 
   const [currentPage, setCurrentPage] = React.useState<number>(1);
