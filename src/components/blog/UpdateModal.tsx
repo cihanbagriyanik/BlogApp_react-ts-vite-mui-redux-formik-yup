@@ -55,7 +55,7 @@ const select = [
 ];
 
 const UpdateModal = ({ blog }: { blog: NewBlogFormValues }) => {
-  // const { removeBlog } = useBlogsCall();
+  const { removeBlog } = useBlogsCall(); //! ***********************************/
 
   //! Update Modal
   const [updateOpen, setUpdateOpen] = React.useState(false);
@@ -120,8 +120,8 @@ const UpdateModal = ({ blog }: { blog: NewBlogFormValues }) => {
             gap={7}
           >
             <Button
-              onClick={handleDeleteClose}
-              // onClick={() => removeBlog("blogs/", blog._id)}
+              // onClick={handleDeleteClose}
+              onClick={() => removeBlog("blogs/", blog._id)} //! ***********************************/
               variant="contained"
               color="primary"
             >
@@ -143,6 +143,7 @@ const UpdateModal = ({ blog }: { blog: NewBlogFormValues }) => {
         <Box>
           <Formik
             initialValues={{
+              _id: blog._id || "",
               title: blog.title || "",
               image: blog.image || "",
               categoryId: blog?.categoryId?._id || "",

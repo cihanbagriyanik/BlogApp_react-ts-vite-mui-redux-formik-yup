@@ -8,9 +8,11 @@ import {
 
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 import useAxios from "./useAxios";
+import { useNavigate } from "react-router-dom";
 
 const useBlogsCall = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { axiosWithToken } = useAxios();
 
@@ -68,6 +70,7 @@ const useBlogsCall = () => {
     try {
       await axiosWithToken.delete(`${url}/${id}`);
       blogsList(url);
+      navigate("/myblog");
       toastSuccessNotify("Blog removed");
     } catch (error) {
       dispatch(fetchFail());
