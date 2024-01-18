@@ -167,7 +167,7 @@ const UpdateModal = ({ blog }: { blog: NewBlogFormValues }) => {
               handleBlur,
               isSubmitting,
               handleSubmit,
-            }: FormikProps<NewBlogFormValues>) => (
+            }) => (
               <Form onSubmit={handleSubmit}>
                 <Box sx={style}>
                   <Box

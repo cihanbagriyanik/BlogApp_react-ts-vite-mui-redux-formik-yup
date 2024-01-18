@@ -7,7 +7,7 @@ import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
 
 import useBlogsCall from "../hooks/useBlogsCall";
-import { Box, Button, Grid } from "@mui/material";
+import { Box, Button, Container, Grid } from "@mui/material";
 
 import loadingGif from "../../public/assets/loading.gif";
 import { RootState } from "../app/store";
@@ -67,6 +67,27 @@ export default function MyBlog() {
             margin: "15rem auto",
           }}
         />
+      ) : currentBlogs.length == 0 ? (
+        <Container
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+            margin: " 5rem ",
+          }}
+        >
+          <Typography variant="h4" sx={{ color: "red", margin: "5rem" }}>
+            No blogs data...
+          </Typography>
+          <Button
+            variant="contained"
+            sx={{ margin: "4rem 0 18.6rem" }}
+            onClick={() => navigate("/newblog")}
+          >
+            Write Blog
+          </Button>
+        </Container>
       ) : (
         currentBlogs.map((a: DataValuesTypes) => {
           return (
@@ -158,27 +179,29 @@ export default function MyBlog() {
                   </Box>
                 </CardActions>
               </Card>
-              <Box>
-                <Stack
-                  sx={{
-                    marginTop: "2rem",
-                    display: "flex",
-                    // justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <Pagination
-                    count={totalPages}
-                    page={currentPage}
-                    color="primary"
-                    onChange={onPageChange}
-                  />
-                </Stack>
-              </Box>
             </Grid>
           );
         })
       )}
+      {currentBlogs.length == 0 ? (
+        <Box>
+          <Stack
+            sx={{
+              marginTop: "2rem",
+              display: "flex",
+              // justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Pagination
+              count={totalPages}
+              page={currentPage}
+              color="primary"
+              onChange={onPageChange}
+            />
+          </Stack>
+        </Box>
+      ) : null}
     </Grid>
   );
 }

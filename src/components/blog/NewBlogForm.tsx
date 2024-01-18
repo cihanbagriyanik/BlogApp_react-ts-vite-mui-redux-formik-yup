@@ -16,6 +16,7 @@ import { useSelector } from "react-redux";
 
 import { RootState } from "../../app/store";
 import useCategoryCall from "../../hooks/useCategoryCall";
+import { useNavigate } from "react-router-dom";
 
 const select = [
   { id: 1, name: "Published", value: true },
@@ -32,6 +33,7 @@ const NewBlogForm = (props: FormikProps<NewBlogFormValues>) => {
     isSubmitting,
     handleSubmit,
   } = props;
+  const navigate = useNavigate();
 
   const { categoryList } = useCategoryCall();
 
@@ -125,12 +127,11 @@ const NewBlogForm = (props: FormikProps<NewBlogFormValues>) => {
               variant="outlined"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values?.isPublish || ""}
+              value={`${values?.isPublish}` || "Please choose..."}
               //   helperText={touched.isPublish && errors.isPublish}
               error={touched.isPublish && Boolean(errors.isPublish)}
               required
             >
-              <MenuItem>Please choose...</MenuItem>
               {select.map((x: any) => (
                 <MenuItem key={x.id} value={x.value}>
                   {x.name}
@@ -161,7 +162,7 @@ const NewBlogForm = (props: FormikProps<NewBlogFormValues>) => {
             size="large"
             disabled={isSubmitting}
           >
-            New Blog
+            Create New Blog
           </Button>
         </Box>
       </Box>

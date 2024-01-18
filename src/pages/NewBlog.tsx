@@ -31,12 +31,11 @@ const NewBlog = () => {
     <Container sx={{ height: "74.1vh" }}>
       <Formik
         initialValues={{
-          // categoryId: "",
           title: "",
           image: "",
           categoryId: "",
           content: "",
-          isPublish: false,
+          isPublish: true,
         }}
         onSubmit={(values: NewBlogFormValues, actions) => {
           console.log("Form Values:", values);

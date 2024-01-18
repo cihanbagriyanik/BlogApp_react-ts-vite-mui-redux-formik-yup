@@ -33,6 +33,7 @@ const useBlogsCall = () => {
       console.log("Before post:", body);
       await axiosWithToken.post(`${url}/`, body);
       console.log("After post: Blog created successfully");
+      navigate("/")
       blogsList(url);
       toastSuccessNotify("New Blog created");
     } catch (error) {
@@ -65,7 +66,7 @@ const useBlogsCall = () => {
     }
   };
 
-  const removeBlog = async (url: string, id: string) => {
+  const removeBlog = async (url: string, id: string | undefined) => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.delete(`${url}/${id}`);

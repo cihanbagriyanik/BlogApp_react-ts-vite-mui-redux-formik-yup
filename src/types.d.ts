@@ -27,26 +27,13 @@ interface category {
   _id: string;
 }
 interface NewBlogFormValues {
-  _id: string
+  _id?: string;
   title: string;
   image: string;
   categoryId: category | any; //! **************/
   content: string;
   isPublish: boolean;
 }
-// interface BaseBlogFormValues {
-//   // Diğer özellikler...
-//   _id: string;
-// }
-// // interface NewBlogFormValues extends BaseBlogFormValues {
-// //   // NewBlogFormValues'e özgü diğer özellikler...
-// //   _id: string
-// //   title: string;
-// //   image: string;
-// //   categoryId: category | any; //! **************/
-// //   content: string;
-// //   isPublish: boolean;
-// // }
 
 //! type for show usesate
 type ShowState = boolean;
