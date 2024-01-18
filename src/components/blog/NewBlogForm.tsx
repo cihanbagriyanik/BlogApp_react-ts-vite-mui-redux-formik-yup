@@ -16,7 +16,6 @@ import { useSelector } from "react-redux";
 
 import { RootState } from "../../app/store";
 import useCategoryCall from "../../hooks/useCategoryCall";
-import { useNavigate } from "react-router-dom";
 
 const select = [
   { id: 1, name: "Published", value: true },
@@ -33,7 +32,6 @@ const NewBlogForm = (props: FormikProps<NewBlogFormValues>) => {
     isSubmitting,
     handleSubmit,
   } = props;
-  const navigate = useNavigate();
 
   const { categoryList } = useCategoryCall();
 

@@ -10,7 +10,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { Form, Formik, FormikProps } from "formik";
+import { Form, Formik } from "formik";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import useCategoryCall from "../../hooks/useCategoryCall";
