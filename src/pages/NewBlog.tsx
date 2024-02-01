@@ -38,8 +38,8 @@ const NewBlog = () => {
           isPublish: true,
         }}
         onSubmit={(values: NewBlogFormValues, actions) => {
-          console.log("Form Values:", values);
-          console.log("Formik Actions:", actions);
+          // console.log("Form Values:", values);
+          // console.log("Formik Actions:", actions);
           createBlog("blogs", values);
           actions.resetForm();
           actions.setSubmitting(false);

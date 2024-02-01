@@ -30,9 +30,9 @@ const useBlogsCall = () => {
   const createBlog = async (url: string, body: NewBlogFormValues) => {
     dispatch(fetchStart());
     try {
-      console.log("Before post:", body);
+      // console.log("Before post:", body);
       await axiosWithToken.post(`${url}/`, body);
-      console.log("After post: Blog created successfully");
+      // console.log("After post: Blog created successfully");
       navigate("/");
       blogsList(url);
       toastSuccessNotify("New Blog created");
@@ -96,8 +96,10 @@ const useBlogsCall = () => {
   const postLike = async (url: string, id: string) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axiosWithToken.post(`${url}`);
-      console.log(`Post Like: ${data}`);
+      const {
+        //  data
+      } = await axiosWithToken.post(`${url}`);
+      // console.log(`Post Like: ${data}`);
       // toastSuccessNotify("Operation succes");
       // getBlogs("blogs");
       blogDetail("blogs/" + id);
@@ -113,7 +115,7 @@ const useBlogsCall = () => {
     updateBlog,
     removeBlog,
     blogDetail,
-    postLike
+    postLike,
   };
 };
 

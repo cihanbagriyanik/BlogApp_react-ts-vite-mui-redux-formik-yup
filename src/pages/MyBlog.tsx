@@ -42,7 +42,7 @@ export default function MyBlog() {
   const indexOfLastBlog = currentPage * BlogsPerPage;
   const indexOfFirstBlog = indexOfLastBlog - BlogsPerPage;
   const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
-  console.log(currentBlogs);
+  // console.log(currentBlogs);
 
   const totalPages = Math.ceil(blogs.length / BlogsPerPage);
 
@@ -167,7 +167,7 @@ export default function MyBlog() {
                   disableSpacing
                 >
                   <Box>
-                    <Icons />
+                    <Icons blog={a}/>
                   </Box>
                   <Box>
                     <Button

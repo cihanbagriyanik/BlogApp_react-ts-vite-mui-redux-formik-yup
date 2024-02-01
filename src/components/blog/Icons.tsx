@@ -6,20 +6,23 @@ import AddCommentIcon from "@mui/icons-material/AddComment";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useParams } from "react-router-dom";
 import useBlogsCall from "../../hooks/useBlogsCall";
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
 
 const Icons: React.FC<IconProps> = ({ show, setShow, blog }) => {
   const { id } = useParams();
   const { postLike } = useBlogsCall();
+  const { user } = useSelector((state: RootState) => state.auth);
 
-  console.log(blog);
+  // console.log(blog);
   // console.log( postLike );
 
   const handleLikeClick = () => {
     postLike(`blogs/${blog._id}/postLike`, `${id}`);
   };
-  console.log("blog.likes:", blog.likes);
-  console.log("blog._id:", blog._id);
-  console.log("Color:", blog.likes?.includes(blog._id) ? "red" : "gray");
+  // console.log("blog.likes:", blog.likes);
+  // console.log("blog._id:", blog._id);
+  // console.log("Color:", blog.likes?.includes(blog._id) ? "red" : "gray");
 
   return (
     <Box>
@@ -28,12 +31,11 @@ const Icons: React.FC<IconProps> = ({ show, setShow, blog }) => {
         onClick={handleLikeClick}
         sx={{
           color: `${
-            blog.likes?.filter((like: string | unknown) => like === blog._id)
+            blog.likes?.filter((like: string | unknown) => like === user._id)
               .length > 0
               ? "red"
               : "gray"
           }`,
-          // color: blog.likes?.includes(blog._id) ? "red" : "gray",
         }}
       >
         <FavoriteIcon />
