@@ -10,6 +10,7 @@ import useBlogsCall from "../hooks/useBlogsCall";
 import Icons from "../components/blog/Icons";
 import CommentForm from "../components/blog/CommentForm";
 import UpdateModal from "../components/blog/UpdateModal";
+import DeleteModal from "../components/blog/DeleteModal";
 
 //! Listing clicked blog content
 const BlogDetail = () => {
@@ -110,7 +111,20 @@ const BlogDetail = () => {
             </Box>
           </Box>
 
-          {user?._id == blog?.userId?._id && <UpdateModal blog={blog} />}
+          {user?._id == blog?.userId?._id && (
+            <Box
+              sx={{
+                marginTop: "2rem",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              gap={5}
+            >
+              <UpdateModal blog={blog} />
+              <DeleteModal blog={blog} />
+            </Box>
+          )}
 
           {show && (
             <>

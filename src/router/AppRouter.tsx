@@ -13,7 +13,6 @@ import Navbar from "../components/Navbar";
 import About from "../pages/About";
 import NewBlog from "../pages/NewBlog";
 import Profile from "../pages/Profile";
-import NotFound from "../pages/NotFound";
 import Footer from "../components/Footer";
 import MyBlog from "../pages/MyBlog";
 
@@ -32,7 +31,6 @@ const AppRouter: React.FC = () => {
           <Route path="newblog" element={<NewBlog />} />
           <Route path="profile" element={<Profile />} />
           <Route path="myblog" element={<MyBlog />} />
-          <Route path="notfound" element={<NotFound />} />
         </Route>
       </Routes>
       <Footer />

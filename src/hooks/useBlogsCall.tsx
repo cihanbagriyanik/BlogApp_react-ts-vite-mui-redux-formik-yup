@@ -50,7 +50,7 @@ const useBlogsCall = () => {
     id: string | undefined,
     body: NewBlogFormValues
   ) => {
-    console.log(body);
+    // console.log(body);
     dispatch(fetchStart());
     try {
       await axiosWithToken.put(`${url}/${id}`, body);

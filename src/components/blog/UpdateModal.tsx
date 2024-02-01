@@ -55,20 +55,12 @@ const select = [
 ];
 
 const UpdateModal = ({ blog }: { blog: NewBlogFormValues }) => {
-  const { removeBlog } = useBlogsCall(); //! ***********************************/
-
-  //! Update Modal
   const [updateOpen, setUpdateOpen] = React.useState(false);
   const handleUpdateOpen = () => setUpdateOpen(true);
   const handleUpdateClose = () => setUpdateOpen(false);
 
   const { updateBlog } = useBlogsCall();
   const { id } = useParams();
-
-  //! Delete Modal
-  const [deleteOpen, setDeleteOpen] = React.useState(false);
-  const handleDeleteOpen = () => setDeleteOpen(true);
-  const handleDeleteClose = () => setDeleteOpen(false);
 
   const { categoryList } = useCategoryCall();
   const { categories } = useSelector((state: RootState) => state?.category);
@@ -81,64 +73,12 @@ const UpdateModal = ({ blog }: { blog: NewBlogFormValues }) => {
 
   return (
     <>
-      <Box
-        sx={{
-          marginTop: "2rem",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-        gap={5}
-      >
+      <Box>
         <Button onClick={handleUpdateOpen} variant="contained" color="success">
           Update Blog
         </Button>
-        <Button onClick={handleDeleteOpen} variant="contained" color="error">
-          Delete Blog
-        </Button>
       </Box>
 
-      {/*//! Delete Modal */}
-      <Modal open={deleteOpen} onClose={handleDeleteClose}>
-        <Box sx={style}>
-          <Typography
-            id="modal-modal-title"
-            variant="h5"
-            component="h2"
-            align="center"
-          >
-            This will delete the blog and all its content permanently. Are you
-            sure you want to proceed?
-          </Typography>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              marginTop: "1.5rem",
-            }}
-            gap={7}
-          >
-            <Button
-              // onClick={handleDeleteClose}
-              onClick={() => removeBlog("blogs/", blog._id)} //! ***********************************/
-              variant="contained"
-              color="primary"
-            >
-              Yes
-            </Button>
-            <Button
-              onClick={handleDeleteClose}
-              variant="contained"
-              color="error"
-            >
-              No
-            </Button>
-          </Box>
-        </Box>
-      </Modal>
-
-      {/* //!Update Modal */}
       <Modal open={updateOpen} onClose={handleUpdateClose}>
         <Box>
           <Formik
@@ -151,8 +91,8 @@ const UpdateModal = ({ blog }: { blog: NewBlogFormValues }) => {
               isPublish: blog.isPublish || false,
             }}
             onSubmit={(values: NewBlogFormValues, actions) => {
-              console.log("Form Values:", values);
-              console.log("Formik Actions:", actions);
+              // console.log("Form Values:", values);
+              // console.log("Formik Actions:", actions);
               updateBlog("blogs", id, values);
               actions.resetForm();
               actions.setSubmitting(false);

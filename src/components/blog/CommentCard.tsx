@@ -29,7 +29,7 @@ const CommentCard: React.FC<CommentFormProps> = ({ blog }) => {
               </Avatar>
             }
             title={x.userId?.firstName + x.userId?.lastName}
-            subheader={x?.createdAt}
+            subheader={new Date(x?.createdAt).toLocaleDateString()}
           />
 
           <CardContent>
