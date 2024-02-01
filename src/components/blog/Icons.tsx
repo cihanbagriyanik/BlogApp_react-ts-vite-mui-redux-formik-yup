@@ -4,25 +4,22 @@ import { Box, IconButton, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import AddCommentIcon from "@mui/icons-material/AddComment";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import { useParams } from "react-router-dom";
 import useBlogsCall from "../../hooks/useBlogsCall";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
+import { useParams } from "react-router-dom";
 
 const Icons: React.FC<IconProps> = ({ show, setShow, blog }) => {
-  const { id } = useParams();
   const { postLike } = useBlogsCall();
   const { user } = useSelector((state: RootState) => state.auth);
 
-  // console.log(blog);
   // console.log( postLike );
 
+  const { id } = useParams();
+
   const handleLikeClick = () => {
-    postLike(`blogs/${blog._id}/postLike`, `${id}`);
+    postLike(`blogs/${blog._id}/postLike`, id);
   };
-  // console.log("blog.likes:", blog.likes);
-  // console.log("blog._id:", blog._id);
-  // console.log("Color:", blog.likes?.includes(blog._id) ? "red" : "gray");
 
   return (
     <Box>
@@ -40,20 +37,12 @@ const Icons: React.FC<IconProps> = ({ show, setShow, blog }) => {
       >
         <FavoriteIcon />
         <Typography>{blog?.likes?.length}</Typography>
-        {/* <Typography>{isNaN(likeCount) ? "" : likeCount}</Typography> */}
       </IconButton>
-      <IconButton
-        aria-label="share"
-        // onClick={handleComment}
-        onClick={() => setShow && setShow(!show)}
-      >
+      <IconButton onClick={() => setShow && setShow(!show)}>
         <AddCommentIcon />
         <Typography>{blog?.comments?.length}</Typography>
       </IconButton>
-      <IconButton
-        aria-label="share"
-        // onClick={handleView}
-      >
+      <IconButton aria-label="share">
         <VisibilityIcon />
         <Typography>{blog?.countOfVisitors}</Typography>
       </IconButton>

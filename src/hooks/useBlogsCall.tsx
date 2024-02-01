@@ -93,16 +93,18 @@ const useBlogsCall = () => {
     }
   };
 
-  const postLike = async (url: string, id: string) => {
+  const postLike = async (url: string, id: string | undefined) => {
     dispatch(fetchStart());
     try {
       const {
         //  data
       } = await axiosWithToken.post(`${url}`);
       // console.log(`Post Like: ${data}`);
-      // toastSuccessNotify("Operation succes");
-      // getBlogs("blogs");
-      blogDetail("blogs/" + id);
+      if (id) {
+        blogDetail("blogs/" + id);
+      } else {
+        blogsList("blogs");
+      }
     } catch (error) {
       dispatch(fetchFail());
       console.log(error);
