@@ -18,7 +18,7 @@ const BlogDetail = () => {
   const { user } = useSelector((state: RootState) => state?.auth);
   // console.log(user);
 
-  const { blogDetailPage } = useBlogsCall();
+  const { blogDetail } = useBlogsCall();
 
   const { loading, blog } = useSelector((state: RootState) => state?.blogs);
   // console.log("Blog Detail:", blog);
@@ -27,7 +27,7 @@ const BlogDetail = () => {
   // console.log("Blog ID:", id);
 
   React.useEffect(() => {
-    blogDetailPage(`blogs/${id}`);
+    blogDetail(`blogs/${id}`);
   }, []);
 
   return (
@@ -106,7 +106,7 @@ const BlogDetail = () => {
 
           <Box sx={{ display: "flex", justifyContent: "start", margin: "0" }}>
             <Box sx={{ marginLeft: "5rem" }}>
-              <Icons show={show} setShow={setShow}/>
+              <Icons show={show} setShow={setShow} blog={blog} />
             </Box>
           </Box>
 

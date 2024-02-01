@@ -4,42 +4,40 @@ import { Box, IconButton, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import AddCommentIcon from "@mui/icons-material/AddComment";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-
-import useBlogsCall from "../../hooks/useBlogsCall";
 import { useParams } from "react-router-dom";
+import useBlogsCall from "../../hooks/useBlogsCall";
 
-
-const Icons: React.FC<IconProps> = ({ show, setShow }) => {
-  const [likeCount, setLikeCount] = React.useState(0);
-  // const [commentCount, setCommentCount] = React.useState(0);
-  // const [viewCount, setViewCount] = React.useState(0);
-
-  // const handleLike = () => {
-  //   setLikeCount((prevCount: number) => prevCount + 1);
-  // };
-
-  /* -------------------------------------------------------------------------- */
-
-  const { blogDetailPage } = useBlogsCall();
+const Icons: React.FC<IconProps> = ({ show, setShow, blog }) => {
   const { id } = useParams();
-  console.log("Blog ID:", id);
+  const { postLike } = useBlogsCall();
 
-  React.useEffect(() => {
-    blogDetailPage(`blogs/${id}`);
-  }, []);
-  
+  console.log(blog);
+  // console.log( postLike );
 
-
-  /* -------------------------------------------------------------------------- */
+  const handleLikeClick = () => {
+    postLike(`blogs/${blog._id}/postLike`, `${id}`);
+  };
+  console.log("blog.likes:", blog.likes);
+  console.log("blog._id:", blog._id);
+  console.log("Color:", blog.likes?.includes(blog._id) ? "red" : "gray");
 
   return (
     <Box>
       <IconButton
         aria-label="favorites"
-        // onClick={handleLike}
+        onClick={handleLikeClick}
+        sx={{
+          color: `${
+            blog.likes?.filter((like: string | unknown) => like === blog._id)
+              .length > 0
+              ? "red"
+              : "gray"
+          }`,
+          // color: blog.likes?.includes(blog._id) ? "red" : "gray",
+        }}
       >
         <FavoriteIcon />
-        <Typography>{likeCount}</Typography>
+        <Typography>{blog?.likes?.length}</Typography>
         {/* <Typography>{isNaN(likeCount) ? "" : likeCount}</Typography> */}
       </IconButton>
       <IconButton
@@ -48,22 +46,14 @@ const Icons: React.FC<IconProps> = ({ show, setShow }) => {
         onClick={() => setShow && setShow(!show)}
       >
         <AddCommentIcon />
-        <Typography>
-          {/* {commentCount} */}
-          {""}0{""}
-        </Typography>
-        {/* <Typography>{isNaN(commentCount) ? "" : commentCount}</Typography> */}
+        <Typography>{blog?.comments?.length}</Typography>
       </IconButton>
       <IconButton
         aria-label="share"
         // onClick={handleView}
       >
         <VisibilityIcon />
-        <Typography>
-          {/* {viewCount} */}
-          {""}0{""}
-        </Typography>
-        {/* <Typography>{isNaN(viewCount) ? "" : viewCount}</Typography> */}
+        <Typography>{blog?.countOfVisitors}</Typography>
       </IconButton>
     </Box>
   );

@@ -39,9 +39,9 @@ export default function BlogsCard() {
 
   const indexOfLastBlog = currentPage * BlogsPerPage;
   const indexOfFirstBlog = indexOfLastBlog - BlogsPerPage;
-  const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
+  const currentBlogs = blogs?.slice(indexOfFirstBlog, indexOfLastBlog);
 
-  const totalPages = Math.ceil(blogs.length / BlogsPerPage);
+  const totalPages = Math.ceil(blogs?.length / BlogsPerPage);
 
   const onPageChange = (_event: React.ChangeEvent<unknown>, page: number) => {
     setCurrentPage(page);
@@ -66,7 +66,7 @@ export default function BlogsCard() {
             }}
           />
         ) : (
-          currentBlogs.map((a: DataValuesTypes) => {
+          currentBlogs?.map((a: DataValuesTypes) => {
             return (
               <Grid
                 item
@@ -142,7 +142,7 @@ export default function BlogsCard() {
                     disableSpacing
                   >
                     <Box>
-                      <Icons />
+                      <Icons blog={a} />
                     </Box>
                     <Box>
                       <Button

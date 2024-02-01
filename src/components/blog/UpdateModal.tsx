@@ -77,7 +77,7 @@ const UpdateModal = ({ blog }: { blog: NewBlogFormValues }) => {
     categoryList("categories/");
   }, []);
 
-  console.log("Blog*****", blog);
+  // console.log("Blog*****", blog);
 
   return (
     <>

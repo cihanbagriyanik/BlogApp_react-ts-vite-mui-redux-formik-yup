@@ -62,3 +62,13 @@ interface CommentFormProps {
   blog: Comments[];
   id?: string | undefined;
 }
+
+interface IconProps {
+  blog?:
+    | any
+    | {
+        likes?: string | [length?: number];
+        comments?: string | [length?: number];
+        countOfVisitors?: number;
+      };
+}

@@ -55,7 +55,7 @@ const useBlogsCall = () => {
     try {
       await axiosWithToken.put(`${url}/${id}`, body);
       // blogsList(url);
-      blogDetailPage(`${url}/${id}`);
+      blogDetail(`${url}/${id}`);
       toastSuccessNotify("Blog updated");
     } catch (error) {
       dispatch(fetchFail());
@@ -82,36 +82,38 @@ const useBlogsCall = () => {
     }
   };
 
-  // const blogDetail = async (url: string) => {
-  //   dispatch(fetchStart());
-  //   try {
-  //     const { data } = await axiosWithToken(`${url}`);
-  //     console.log(data);
-  //     dispatch(getBlogDetail({ data: data.data }));
-  //   } catch (error) {
-  //     dispatch(fetchFail());
-  //   }
-  // };
+  const blogDetail = async (url: string) => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axiosWithToken(`${url}`);
+      // console.log(data);
+      dispatch(getBlogDetail({ data: data.data }));
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
 
-
-const blogDetailPage = async (url: string) => {
-  dispatch(fetchStart());
-  try {
-    const { data } = await axiosWithToken(`${url}`);
-    console.log(data);
-    dispatch(getBlogDetail({ data: data.data }));
-  } catch (error) {
-    dispatch(fetchFail());
-  }
-};
+  const postLike = async (url: string, id: string) => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axiosWithToken.post(`${url}`);
+      console.log(`Post Like: ${data}`);
+      // toastSuccessNotify("Operation succes");
+      // getBlogs("blogs");
+      blogDetail("blogs/" + id);
+    } catch (error) {
+      dispatch(fetchFail());
+      console.log(error);
+    }
+  };
 
   return {
     blogsList,
     createBlog,
     updateBlog,
     removeBlog,
-    // blogDetail,
-    blogDetailPage
+    blogDetail,
+    postLike
   };
 };
 
