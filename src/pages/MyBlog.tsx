@@ -167,7 +167,7 @@ export default function MyBlog() {
                   disableSpacing
                 >
                   <Box>
-                    <Icons blog={a}/>
+                    <Icons blog={a} />
                   </Box>
                   <Box>
                     <Button

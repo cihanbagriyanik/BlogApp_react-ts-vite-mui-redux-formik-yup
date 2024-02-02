@@ -1,7 +1,8 @@
-<p>Clarusway<img align="right"
-  src="https://secure.meetupstatic.com/photos/event/3/1/b/9/600_488352729.jpeg"  width="15px"></p>
-
 # Milestone Blog App
+
+## Expected Outcome
+
+![Blog App](blogapp1.gif)
 
 ## Description
 
@@ -9,61 +10,67 @@ Project aims to create a Milestone Blog App.
 
 ## Problem Statement
 
-- We are adding a new project to our portfolios. So you and your colleagues have started to work on the project.
+- I am adding a new project to our portfolios. So you and your colleagues have started to work on the project.
 
 ## Project Skeleton Example
+
 ```
 Milestone Blog App (folder for redux)
 
-|----readme.md         # Given to the students (Definition of the project)
+|----readme.md         # Given (Definition of the project)
 SOLUTION
+├── public
+|    ├── assets
+|    |   └── loading.gif
 ├── src
 |    ├── index.css
-|    ├── index.js
+|    ├── main.tsx
 |    ├── App.css
-|    ├── App.js
+|    ├── App.tsx
+|    ├── types.d.ts
+|    ├── vite-env.d.ts
 |    ├── app
-|    │   └── store.jsx
-|    ├── assets
-|    │   ├── about.png
+|    │   └── store.tsx
 |    ├── components
 |    │   ├── auth
-|    │   │   ├── LoginFom.jsx
-|    │   │   └── RegisterForm.jsx
+|    │   │   ├── LoginFom.tsx
+|    │   │   └── RegisterForm.tsx
 |    │   ├── blog
-|    │   │   ├── Card.jsx
-|    │   │   ├── CommentCard.jsx
-|    │   │   ├── CommentForm.jsx
-|    │   │   ├── DeleteModal.jsx
-|    │   │   └── UpdateModal.jsx
-|    │   ├── FooTer.jsx
-|    │   ├── NavBar.jsx
+|    │   │   ├── BlogsCard.tsx
+|    │   │   ├── CommentCard.tsx
+|    │   │   ├── CommentForm.tsx
+|    │   │   ├── DeleteModal.tsx
+|    │   │   ├── Icons.tsx
+|    │   │   ├── NewBlogForm.tsx
+|    │   │   └── UpdateModal.tsx
+|    │   ├── Footer.tsx
+|    │   └── NavBar.tsx
 |    ├── features
-|    │   ├── authSlice.jsx
-|    │   └── blogSlice.jsx
+|    │   ├── authSlice.tsx
+|    │   ├── blogSlice.tsx
+|    │   ├── categorySlice.tsx
+|    │   └── commentSlice.tsx
 |    ├── helper
-|    │   └── ToastNotify.jsx
+|    │   └── ToastNotify.tsx
 |    ├── hooks
-|    │   ├── useAuthCalls.jsx
-|    │   ├── useAxios.jsx
-|    │   └── useBlogCalls.jsx
+|    │   ├── useAuthCall.tsx
+|    │   ├── useAxios.tsx
+|    │   ├── useBlogCall.tsx
+|    │   ├── useCategoryCall.tsx
+|    │   └── useCommentCall.tsx
 |    ├── pages
-|    │   ├── About.jsx
-|    │   ├── Dashboard.jsx
-|    │   ├── Detail.jsx
-|    │   ├── Login.jsx
-|    │   ├── NewBlog.jsx
-|    │   ├── NotFound.jsx
-|    │   ├── Profile.jsx
-|    │   └── Register.jsx
+|    │   ├── About.tsx
+|    │   ├── BlogDetail.tsx
+|    │   ├── Dashboard.tsx
+|    │   ├── Login.tsx
+|    │   ├── MyBlog.tsx
+|    │   ├── NewBlog.tsx
+|    │   ├── Profile.tsx
+|    │   └── Register.tsx
 |    └── router
-|        ├── AppRouter.jsx
-|        └── PrivateRouter.jsx
+|        ├── AppRouter.tsx
+|        └── PrivateRouter.tsx
 ```
-
-## Expected Outcome
-
-![Blog App](blogapp1.gif)
 
 ## Objective
 
@@ -79,9 +86,13 @@ Build a Milestone Blog App using ReactJS.
 
 - ReactJS
 
+- ReduxJS
+
+- TypeScript
+
 ### At the end of the project, students will be able to;
 
-- improve coding skills within HTML & CSS & JS & ReactJS & Django.
+- improve coding skills within HTML & CSS & JS & ReactJS & TypeScript.
 
 - use git commands (push, pull, commit, add etc.) and Github as Version Control System.
 
@@ -89,11 +100,11 @@ Build a Milestone Blog App using ReactJS.
 
 - Step 1 : Create React App using `npx create-react-app milestone-blog-app`
 
-- Step 2 : Use NodeSs backend for authentication and CRUD operations.
+- Step 2 : Use NodeJs backend for authentication and CRUD operations.
 
 - Step 3 : You can use css frameworks like Bootstrap, Tailwind Css, Material UI.
 
-- Step 4 : You can view sample app on https://milestone-blogapp-cw.vercel.app/.
+- Step 4 : You can view sample app on https://blog-app-cihan.vercel.app/.
 
 - Step 5 : Add project gif to your project and README.md file.
 
@@ -108,14 +119,15 @@ Build a Milestone Blog App using ReactJS.
 
 ## Demo
 
-[Milestone Blog App](https://milestone-blogapp-cw.vercel.app/)
+[Milestone Blog App](https://blog-app-cihan.vercel.app/)
 
 **<p align="center">&#9786; Happy Coding &#9997;</p>**
 
 ## API
 
-- Kendi linkinizi StockAppte olduğu gibi yine aynı adresten bu sefer Select application kısmında Blogapp-NodeJs Apıyi seçerek alabileceksiniz.
-- Authentication işlemleri StockApp ile aynı :
+- will be written very soon
+
+- but small explanation is below
 
 ```
   login => auth/login/
@@ -291,4 +303,3 @@ Build a Milestone Blog App using ReactJS.
 ## Postman Documentation
 
 [View Postman Documentation](https://documenter.getpostman.com/view/19994125/2s9YsGhYRx)
-
