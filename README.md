@@ -1,8 +1,8 @@
-# Milestone Blog App
+![ScreenRecording2024-02-02at13 25 55-ezgif com-speed](https://github.com/cihanbagriyanik/Milestone-_BlogApp_react-ts-vite-mui-redux-formik-yup/assets/132518854/2f38a748-a0d3-48b2-b8ac-d07fa431c201)# Milestone Blog App
 
 ## Expected Outcome
 
-![Blog App](blogapp1.gif)
+![Blog App](![Uploading ScreenRecording2024-02-02at13.25.55-ezgif.com-speed.gif…])
 
 ## Description
 
