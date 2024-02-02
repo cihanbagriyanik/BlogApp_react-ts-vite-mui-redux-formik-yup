@@ -49,7 +49,7 @@ const BlogDetail = () => {
           sx={{
             padding: "3rem",
             height:"100vh",
-            border: "1px solid red"
+            // border: "1px solid red"
           }}
         >
           <Box
