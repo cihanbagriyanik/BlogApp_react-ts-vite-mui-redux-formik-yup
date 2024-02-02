@@ -28,7 +28,7 @@ const Profile = () => {
         minWidth: "10rem",
         height: "30rem",
         minHeight: "10rem",
-        margin: " 7rem auto 12rem",
+        margin: " 7rem auto 10rem",
       }}
     >
       <CardActionArea>
