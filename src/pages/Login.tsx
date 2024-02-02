@@ -10,8 +10,7 @@ import { Link } from "react-router-dom";
 import { Formik } from "formik";
 import useAuthCall from "../hooks/useAuthCall";
 import LoginForm, { loginScheme } from "../components/auth/LoginForm";
-
-
+import { Button } from "@mui/material";
 
 const Login = () => {
   const { login } = useAuthCall();
@@ -22,7 +21,7 @@ const Login = () => {
         justifyContent="center"
         direction="row-reverse"
         sx={{
-          height: "100vh",
+          height: "78.7vh",
           p: 2,
         }}
       >
@@ -52,7 +51,9 @@ const Login = () => {
             component={(props) => <LoginForm {...props} />}
           ></Formik>
           <Box sx={{ textAlign: "center", mt: 2, color: "secondary.main" }}>
-            <Link to="/register">Don't have an account? Sign Up</Link>
+            <Button>
+              <Link to="/register">Don't have an account? Sign Up</Link>
+            </Button>
           </Box>
         </Grid>
       </Grid>

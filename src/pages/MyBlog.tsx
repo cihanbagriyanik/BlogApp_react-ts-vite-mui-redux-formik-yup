@@ -75,6 +75,7 @@ export default function MyBlog() {
             alignItems: "center",
             flexDirection: "column",
             margin: " 5rem ",
+            height: "62vh",
           }}
         >
           <Typography variant="h4" sx={{ color: "red", margin: "5rem" }}>
@@ -106,6 +107,7 @@ export default function MyBlog() {
                 justifyContent: "center",
                 alignItems: "center",
                 flexDirection: "column",
+                height: "78.8vh",
               }}
             >
               <Card
@@ -129,7 +131,7 @@ export default function MyBlog() {
                   src=""
                   height="194"
                   image={a.image}
-                  alt="Paella dish"
+                  alt="image"
                 />
                 <CardContent
                   sx={{

@@ -81,7 +81,7 @@ const BlogDetail = () => {
           <Box sx={{ display: "flex", justifyContent: "center" }}>
             <img
               src={blog.image}
-              alt="Paella dish"
+              alt="image"
               style={{ width: "50%", height: "auto" }}
             />
           </Box>

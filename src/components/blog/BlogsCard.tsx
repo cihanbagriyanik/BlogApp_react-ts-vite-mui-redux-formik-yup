@@ -104,7 +104,7 @@ export default function BlogsCard() {
                     src=""
                     height="194"
                     image={a.image}
-                    alt="Paella dish"
+                    alt="image"
                   />
                   <CardContent
                     sx={{

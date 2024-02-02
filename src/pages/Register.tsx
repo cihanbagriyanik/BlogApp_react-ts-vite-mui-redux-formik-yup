@@ -4,7 +4,7 @@ import Avatar from "@mui/material/Avatar";
 import LockIcon from "@mui/icons-material/Lock";
 import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
 import { Formik } from "formik";
 import useAuthCall from "../hooks/useAuthCall";
@@ -20,7 +20,7 @@ const Register = () => {
         direction="row-reverse"
         rowSpacing={{ sm: 3 }}
         sx={{
-          height: "100vh",
+          height: "81.2vh",
           p: 2,
         }}
       >
@@ -66,7 +66,9 @@ const Register = () => {
           ></Formik>
 
           <Box sx={{ textAlign: "center", mt: 2, color: "secondary.main" }}>
-            <Link to="/">Already have an account? Sign in</Link>
+            <Button>
+              <Link to="/login">Already have an account? Sign in</Link>
+            </Button>
           </Box>
         </Grid>
       </Grid>
