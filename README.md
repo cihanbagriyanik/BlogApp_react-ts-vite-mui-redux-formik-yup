@@ -4,31 +4,20 @@
 
 ![ScreenRecording2024-02-02at13 25 55-ezgif com-speed](https://github.com/cihanbagriyanik/Milestone-_BlogApp_react-ts-vite-mui-redux-formik-yup/assets/132518854/2f38a748-a0d3-48b2-b8ac-d07fa431c201)
 
-## Description
+### Blog App Backend (Blog API)
 
-Project aims to create a Milestone Blog App.
+[Backend](#backend)
 
-## Problem Statement
-
-- I am adding a new project to our portfolios. So you and your colleagues have started to work on the project.
-
-## Project Skeleton Example
+## Folder/File Structure:
 
 ```
-Milestone Blog App (folder for redux)
+Milestone Blog App
 
-|----readme.md         # Given (Definition of the project)
 SOLUTION
 ├── public
 |    ├── assets
 |    |   └── loading.gif
 ├── src
-|    ├── index.css
-|    ├── main.tsx
-|    ├── App.css
-|    ├── App.tsx
-|    ├── types.d.ts
-|    ├── vite-env.d.ts
 |    ├── app
 |    │   └── store.tsx
 |    ├── components
@@ -67,239 +56,91 @@ SOLUTION
 |    │   ├── NewBlog.tsx
 |    │   ├── Profile.tsx
 |    │   └── Register.tsx
-|    └── router
-|        ├── AppRouter.tsx
-|        └── PrivateRouter.tsx
-```
-
-## Objective
-
-Build a Milestone Blog App using ReactJS.
-
-### At the end of the project, following topics are to be covered;
-
-- HTML
-
-- CSS
-
-- JS
-
-- ReactJS
-
-- ReduxJS
-
-- TypeScript
-
-### At the end of the project, students will be able to;
-
-- improve coding skills within HTML & CSS & JS & ReactJS & TypeScript.
-
-- use git commands (push, pull, commit, add etc.) and Github as Version Control System.
-
-## Steps to Solution
-
-- Step 1 : Create React App using `npx create-react-app milestone-blog-app`
-
-- Step 2 : Use NodeJs backend for authentication and CRUD operations.
-
-- Step 3 : You can use css frameworks like Bootstrap, Tailwind Css, Material UI.
-
-- Step 4 : You can view sample app on https://blog-app-cihan.vercel.app/.
-
-- Step 5 : Add project gif to your project and README.md file.
-
-## Notes
-
-- You can add additional functionalities to your app.
-
-## Bonus
-
-- [React Helmet](https://www.npmjs.com/package/react-helmet)
-- [Open Graph](https://medium.com/@muhammederdinc/open-graph-protokol%C3%BC-nedir-2c61f1454526)
-
-## Demo
-
-[Milestone Blog App](https://blog-app-cihan.vercel.app/)
-
-**<p align="center">&#9786; Happy Coding &#9997;</p>**
-
-## API
-
-- will be written very soon
-
-- but small explanation is below
-
-```
-  login => auth/login/
-  register => users/
-  logout => auth/logout/
-```
-
-- Post Read/List
-
-```javascript
-    // Pagination yapısı backend tarafından ayarlandı. page bilgisi gelen response ta var oradan kaç sayfa olduğunu yakalayabilirsiniz. Default olarak her sayfada 25 veri sergileniyor. Bunu manuel olarak istek atarken ayarlayabilirsiniz. Örneğin;
-    //?page=1&limit=10
-
-  endpoints => blogs?page=1
-  method: GET
-  no authentication
-  comments, countOfVisitors ve likes bilgileri response da dönüyor buradan alarak sayıları/uzunluklarını kullanabilirsiniz.
-```
-
-- Post Create
-
-```javascript
-  endpoints => blogs
-  method: POST
-  headers: {"Authorization":`Token ${yourtoken}`}
-
-  body: {
-      "title": "Topkapı Sarayı",
-      "content": "Topkapı Sarayı (Osmanlı Türkçesi: طوپقپو سرايى), İstanbul Sarayburnu'nda, Osmanlı             İmparatorluğu'nun 600 yıllık tarihinin 400 yılı boyunca, devletin idare merkezi olarak kullanılan ve Osmanlı padişahlarının yaşadığı saraydır. Bir zamanlar içinde 4.000'e yakın insan yaşamıştır.\n Topkapı Sarayı Fatih Sultan Mehmed tarafından 1478’de yaptırılmış, Abdülmecid’in Dolmabahçe Sarayı’nı yaptırmasına kadar yaklaşık 380 sene boyunca devletin idare merkezi ve Osmanlı padişahlarının resmi ikâmetgâhı olmuştur. Kuruluş yıllarında yaklaşık 700.000 m²'lik bir alanda yer alan sarayın bugünkü alanı 80.000 m²'dir.\nopkapı Sarayı, saray halkının Dolmabahçe Sarayı, Yıldız Sarayı ve diğer saraylarda yaşamaya başlaması ile birlikte boşaltılmıştır. Padişahlar tarafından terk edildikten sonra da içinde birçok görevlinin yaşadığı Topkapı Sarayı hiçbir zaman önemini kaybetmemiştir. Saray zaman zaman onarılmıştır. Ramazan ayı içerisinde padişah ve ailesi tarafından ziyaret edilen Kutsal Emanetler'in bulunduğu Hırka-i Saadet Dairesi’nin her yıl bakımının yapılmasına ayrı bir önem verilmiştir.",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Topkapi_Palace_Seen_From_Harem.JPG/270px-Topkapi_Palace_Seen_From_Harem.JPG",
-      "categoryId": "6591ef8d26959a81bce92d5a",
-      "isPublished": "true"
-}
-    // yukarıdaki verileri göndermeniz yeterli olacaktır
-.
-    category endpoints => "categories"
-    isPublished => {
-      "false":"draft",
-      "true":"published"
-    }
+|    ├── router
+|    |    ├── AppRouter.tsx
+|    |    └── PrivateRouter.tsx
+|    ├── App.css
+|    ├── App.tsx
+|    ├── index.css
+|    ├── main.tsx
+|    ├── types.d.ts
+|    └── vite-env.d.ts
+├── index.html
+├── pacgage.json
+├── pnpm-lock.yaml
+├── readme.md
+├── tsconfig.json
+├── tsconfig.node.json
+├── vercel.json
+└── vite.config.ts
 
 ```
 
-- Post Update
+## Installed Packages:
 
-```json
-  endpoints => blogs/{post_id} //blogs/6596a348fe3c4517336492eb
-  method: PUT
-  headers: {"Authorization":`Token ${yourtoken}`}
+- **@emotion/react**: ^11.11.3
+- **@emotion/styled**: ^11.11.0
+- **@mui/icons-material**: ^5.15.3
+- **@mui/material**: ^5.15.3
+- **@reduxjs/toolkit**: ^2.0.1
+- **@types/react-redux**: ^7.1.33
+- **axios**: ^1.6.4
+- **formik**: ^2.4.5
+- **react**: ^18.2.0
+- **react-dom**: ^18.2.0
+- **react-redux**: ^9.0.4
+- **react-router-dom**: ^6.21.1
+- **react-toastify**: ^9.1.3
+- **redux-persist**: ^6.0.0
+- **yup**: ^1.3.3
 
-  body: {
-      "_id": "6596a348fe3c4517336492eb",
-      "userId": "6596a2a7fe3c4517336492ce",
-      "categoryId": "6591ef8d26959a81bce92d5a",
-      "title": "Topkapı Sarayı!",
-      "content": "Topkapı Sarayı (Osmanlı Türkçesi: طوپقپو سرايى), İstanbul Sarayburnu'nda, Osmanlı İmparatorluğu'nun 600 yıllık tarihinin 400 yılı boyunca, devletin idare merkezi olarak kullanılan ve Osmanlı padişahlarının yaşadığı saraydır. Bir zamanlar içinde 4.000'e yakın insan yaşamıştır.\n Topkapı Sarayı Fatih Sultan Mehmed tarafından 1478’de yaptırılmış, Abdülmecid’in Dolmabahçe Sarayı’nı yaptırmasına kadar yaklaşık 380 sene boyunca devletin idare merkezi ve Osmanlı padişahlarının resmi ikâmetgâhı olmuştur. Kuruluş yıllarında yaklaşık 700.000 m²'lik bir alanda yer alan sarayın bugünkü alanı 80.000 m²'dir.\nopkapı Sarayı, saray halkının Dolmabahçe Sarayı, Yıldız Sarayı ve diğer saraylarda yaşamaya başlaması ile birlikte boşaltılmıştır. Padişahlar tarafından terk edildikten sonra da içinde birçok görevlinin yaşadığı Topkapı Sarayı hiçbir zaman önemini kaybetmemiştir. Saray zaman zaman onarılmıştır. Ramazan ayı içerisinde padişah ve ailesi tarafından ziyaret edilen Kutsal Emanetler'in bulunduğu Hırka-i Saadet Dairesi’nin her yıl bakımının yapılmasına ayrı bir önem verilmiştir.",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Topkapi_Palace_Seen_From_Harem.JPG/270px-Topkapi_Palace_Seen_From_Harem.JPG",
-      "isPublish": true
-}
+## Description
 
-    category endpoints => "categories"
-    isPublished => {
-      "false":"draft",
-      "true":"published"
-    }
-```
+The Blog App is a React-based application designed for creating and managing blog posts. It provides features for users to register, login, create, edit, and delete blog posts efficiently.
 
-- Post Delete
+## Technologies Used
 
-```javascript
-  endpoints => blogs/{post_id} // blogs/6596a348fe3c4517336492eb
-  method: DELETE
-  headers: {"Authorization":`Token ${yourtoken}`}
-```
+- **MUI and MUI icons**: Material-UI components and icons for building a sleek and responsive user interface.
+- **Axios**: A library for making HTTP requests, used for handling data fetching and sending operations.
+- **Redux/Redux Toolkit**: State management libraries for managing application-wide state and data flow.
+- **React Router DOM**: Navigation library for handling routing and navigation within the application.
+- **Formik and Yup**: Libraries for simplifying form management and validation in React applications.
+- **TypeScript**: A superset of JavaScript that adds static type definitions, enhancing code quality and developer productivity.
 
-- Comments Create
+## Features
 
-```javascript
-  endpoints => comments
-  method: POST
-  headers: {"Authorization":`Token ${yourtoken}`}
+- **Authentication**: User authentication system with registration and login functionality.
+- **CRUD Operations**: Ability to create, read, update, and delete blog posts.
+- **Form Management with Formik and Yup**: Build and manage forms easily with Formik while ensuring data validation with Yup.
+- **Responsive UI with Material-UI**: Utilize Material-UI components and icons to create a responsive and visually appealing user interface.
+- **Efficient Data Fetching with Axios**: Fetch data from external APIs or backend servers efficiently using Axios.
+- **Enhanced Routing with React Router DOM**: Implement dynamic routing and navigation within the application to enhance user experience.
 
-  body:{
-      "blogId": "6596a348fe3c4517336492eb",
-      "comment": "Comment 1"
-  }
+## Installation
 
-```
+To install and run the Blog App locally, follow these steps:
 
-- Likes Create or UnLike
+1. Clone the project repository to your local machine.
+2. Navigate to the project directory in your terminal.
+3. Install project dependencies using `pnpm install`.
+4. Start the development server with `pnpm run dev`.
+5. Access the application at `localhost:5173` in your web browser.
 
-```json
-  endpoints => blogs/{post_id}/postLike // blogs/6596a348fe3c4517336492eb/postLike
-  method: POST
-  headers: {"Authorization":`Token ${yourtoken}`}
-```
+## Usage
 
-- Get Post Detail
+Once the application is running, users can register/login and perform CRUD operations on blog posts. Navigate through the various sections to perform relevant operations.
 
-```json
-  endpoints => blogs/${post.id} // blogs/6591ef8d26959a81bce92d5d
-  method: GET
-  headers: {"Authorization":`Token ${yourtoken}`}
-```
+## Contribution
 
-- User Blogs
+Contributions to the Blog App project are welcome! If you'd like to contribute, please open a pull request with your proposed changes. Feedback and suggestions for improvements are also appreciated.
 
-```json
-  endpoints => blogs?author=${user.id} // blogs?author=6596a2a7fe3c4517336492ce
-  method: GET
-  headers: {"Authorization":`Token ${yourtoken}`}
-```
+## Backend
 
-### Sample Response
+The backend of the Blog App is powered by the BlogAPI project. Below are the details of the backend:
 
-- All Blogs
-| Buradan gelen veriler içinde toplamda kaç sayfa olduğu bilgisi yer alıyor ona göre pagination işlemi yapabilirsiniz.
+- **GitHub Repository**: [BlogAPI GitHub](https://github.com/cihanbagriyanik/BlogAPI)
+- **Documentation**: [BlogAPI Documentation](https://blog-api-9uyr.onrender.com/)
 
-  <img src="./allblogs.png" width="900px" />
-<br>
+## License
 
-- Single Blogs
-
-| Bloğa ait comments verileri detail isteği attığınızda response olarak dönüyor. Ayrıca singleblogs için get isteği attığınızda görüntülenme sayısı da backend tarafından artırılıyor.
-
-```json
-{
-  "error": false,
-  "data": {
-    "_id": "6596c9b7fe3c451733649382",
-    "userId": {
-      "_id": "6596a2a7fe3c4517336492ce",
-      "username": "TestUser",
-      "firstName": "test9999",
-      "lastName": "9999test"
-    },
-    "categoryId": {
-      "_id": "6591ef8d26959a81bce92d5a",
-      "name": "World",
-      "createdAt": "2023-12-31T22:47:41.846Z",
-      "updatedAt": "2023-12-31T22:47:41.846Z",
-      "__v": 0
-    },
-    "title": "Topkapı Sarayı",
-    "content": "Topkapı Sarayı (Osmanlı Türkçesi: طوپقپو سرايى), İstanbul Sarayburnu'nda, Osmanlı İmparatorluğu'nun 600 yıllık tarihinin 400 yılı boyunca, devletin idare merkezi olarak kullanılan ve Osmanlı padişahlarının yaşadığı saraydır. Bir zamanlar içinde 4.000'e yakın insan yaşamıştır. Topkapı Sarayı Fatih Sultan Mehmed tarafından 1478’de yaptırılmış, Abdülmecid’in Dolmabahçe Sarayı’nı yaptırmasına kadar yaklaşık 380 sene boyunca devletin idare merkezi ve Osmanlı padişahlarının resmi ikâmetgâhı olmuştur. Kuruluş yıllarında yaklaşık 700.000 m²'lik bir alanda yer alan sarayın bugünkü alanı 80.000 m²'dir. opkapı Sarayı, saray halkının Dolmabahçe Sarayı, Yıldız Sarayı ve diğer saraylarda yaşamaya başlaması ile birlikte boşaltılmıştır. Padişahlar tarafından terk edildikten sonra da içinde birçok görevlinin yaşadığı Topkapı Sarayı hiçbir zaman önemini kaybetmemiştir. Saray zaman zaman onarılmıştır. Ramazan ayı içerisinde padişah ve ailesi tarafından ziyaret edilen Kutsal Emanetler'in bulunduğu Hırka-i Saadet Dairesi’nin her yıl bakımının yapılmasına ayrı bir önem verilmiştir.",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Topkapi_Palace_Seen_From_Harem.JPG/270px-Topkapi_Palace_Seen_From_Harem.JPG",
-    "isPublish": true,
-    "comments": [
-      {
-        "_id": "6596cbdafe3c4517336493a6",
-        "blogId": "6596c9b7fe3c451733649382",
-        "userId": {
-          "_id": "6596a2a7fe3c4517336492ce",
-          "username": "TestUser",
-          "firstName": "test9999",
-          "lastName": "9999test"
-        },
-        "comment": "Comment 1",
-        "createdAt": "2024-01-04T15:16:42.405Z",
-        "updatedAt": "2024-01-04T15:16:42.405Z",
-        "__v": 0
-      }
-    ],
-    "likes": ["6596a2a7fe3c4517336492ce"],
-    "countOfVisitors": 0,
-    "createdAt": "2024-01-04T15:07:35.639Z",
-    "updatedAt": "2024-01-04T15:16:42.408Z",
-    "__v": 1
-  }
-}
-```
-
-## Postman Documentation
-
-[View Postman Documentation](https://documenter.getpostman.com/view/19994125/2s9YsGhYRx)
+This project is licensed under the MIT License. See the LICENSE file for more information.
