@@ -1,4 +1,5 @@
 import React from "react";
+import "../App.css";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -19,21 +20,25 @@ import MyBlog from "../pages/MyBlog";
 const AppRouter: React.FC = () => {
   return (
     <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
+      <div className="routes-container">
+        <Navbar />
+        <div style={{ flexGrow: "3" }}>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
 
-        <Route path="" element={<PrivateRouter />}>
-          <Route path="blogdetail/:id" element={<BlogDetail />} />
-          <Route path="about" element={<About />} />
-          <Route path="newblog" element={<NewBlog />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="myblog" element={<MyBlog />} />
-        </Route>
-      </Routes>
-      <Footer />
+            <Route path="" element={<PrivateRouter />}>
+              <Route path="blogdetail/:id" element={<BlogDetail />} />
+              <Route path="about" element={<About />} />
+              <Route path="newblog" element={<NewBlog />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path="myblog" element={<MyBlog />} />
+            </Route>
+          </Routes>
+        </div>
+        <Footer />
+      </div>
     </Router>
   );
 };

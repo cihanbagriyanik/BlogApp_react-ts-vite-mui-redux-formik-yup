@@ -26,7 +26,7 @@ const icons = [
 
 const About: React.FC = () => {
   return (
-    <Box sx={{ height: "75vh" }}>
+    <Box >
       <Box sx={{ display: "flex", justifyContent: "center", marginTop: 5 }}>
         <Card sx={{ p: 3, py: 4, maxWidth: 600 }}>
           <Box sx={{ textAlign: "center" }}>

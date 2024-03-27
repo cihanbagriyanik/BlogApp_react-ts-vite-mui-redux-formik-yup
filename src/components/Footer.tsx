@@ -7,7 +7,7 @@ const Footer = () => {
         backgroundColor: "#1976d2",
         width: "100%",
         padding: ".5rem",
-        margin: "18rem 0 0",
+        margin: "3.5rem 0 0",
         // position: "fixed",
         bottom: "0",
         display: "inline-block",

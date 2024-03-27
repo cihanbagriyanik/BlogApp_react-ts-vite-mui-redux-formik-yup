@@ -13,16 +13,18 @@ import RegisterForm, { SignupSchema } from "../components/auth/RegisterForm";
 const Register = () => {
   const { register } = useAuthCall();
   return (
-    <Container maxWidth="lg">
+    <Container
+      maxWidth="lg"
+      sx={{
+        marginTop: "3rem",
+      }}
+    >
       <Grid
         container
         justifyContent="center"
         direction="row-reverse"
         rowSpacing={{ sm: 3 }}
-        sx={{
-          height: "81.2vh",
-          p: 2,
-        }}
+
       >
         <Grid item xs={12} sm={10} md={6}>
           <Avatar

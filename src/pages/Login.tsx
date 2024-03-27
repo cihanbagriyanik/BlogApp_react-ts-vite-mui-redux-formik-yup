@@ -15,15 +15,11 @@ import { Button } from "@mui/material";
 const Login = () => {
   const { login } = useAuthCall();
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" sx={{marginTop:"5rem"}}>
       <Grid
         container
         justifyContent="center"
         direction="row-reverse"
-        sx={{
-          height: "78.7vh",
-          p: 2,
-        }}
       >
         <Grid item xs={12} sm={10} md={6}>
           <Avatar

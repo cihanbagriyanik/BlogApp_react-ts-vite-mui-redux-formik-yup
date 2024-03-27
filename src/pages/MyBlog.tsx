@@ -74,8 +74,8 @@ export default function MyBlog() {
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
-            margin: " 5rem ",
-            height: "62vh",
+            // margin: " 5rem ",
+            // height: "62vh",
           }}
         >
           <Typography variant="h4" sx={{ color: "red", margin: "5rem" }}>
@@ -107,7 +107,7 @@ export default function MyBlog() {
                 justifyContent: "center",
                 alignItems: "center",
                 flexDirection: "column",
-                height: "78.8vh",
+                // height: "78.8vh",
               }}
             >
               <Card
