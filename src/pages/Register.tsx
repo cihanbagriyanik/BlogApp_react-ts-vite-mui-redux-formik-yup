@@ -7,44 +7,46 @@ import { Link } from "react-router-dom";
 import { Box, Button } from "@mui/material";
 
 import { Formik } from "formik";
-import { FormikHelpers } from "formik";
+// import { FormikHelpers } from "formik";
 import useAuthCall from "../hooks/useAuthCall";
 import RegisterForm, { SignupSchema } from "../components/auth/RegisterForm";
 
-interface RegisterResponse {
-  token?: string;
-  error?: string;
-}
+// interface RegisterResponse {
+//   token?: string;
+//   error?: string;
+// }
 
 const Register = () => {
   const { register } = useAuthCall();
 
-  const handleSubmit = async (
-    values: FormValues,
-    actions: FormikHelpers<FormValues>
-  ) => {
-    try {
-      // Sunucuya kayıt isteği gönder
-      const response: any | RegisterResponse = await register(values);
+  // const handleSubmit = async (
+  //   values: FormValues,
+  //   actions: FormikHelpers<FormValues>
+  // ) => {
+  //   try {
+  //     // Sunucuya kayıt isteği gönder
+  //     const response: any | RegisterResponse = await register(values);
 
-      // Eğer sunucudan token başarılı bir şekilde döndüyse, oturumu başlat
-      if (response && response.token) {
-        console.log("Token:", response.token);
-        // Oturum açıldıktan sonra, kullanıcıyı başka bir sayfaya yönlendirebilirsiniz
-        // Örneğin, burada "/home" sayfasına yönlendirme yapabilirsiniz
-        // window.location.href = "/home";
-      } else {
-        // Sunucudan token dönmediyse, kayıt işlemi başarısız olmuştur
-        console.error("Registration failed:", response.error);
-        // Kullanıcıya bir hata mesajı gösterebilirsiniz
-      }
-    } catch (error) {
-      console.error("Registration error:", error);
-      // Kayıt sırasında bir hata oluşursa, kullanıcıya bir hata mesajı gösterebilirsiniz
-    } finally {
-      actions.setSubmitting(false);
-    }
-  };
+  //     console.log("response" + response);
+
+  //     // Eğer sunucudan token başarılı bir şekilde döndüyse, oturumu başlat
+  //     if (response && response.token) {
+  //       console.log("Token:", response.token);
+  //       // Oturum açıldıktan sonra, kullanıcıyı başka bir sayfaya yönlendirebilirsiniz
+  //       // Örneğin, burada "/home" sayfasına yönlendirme yapabilirsiniz
+  //       // window.location.href = "/home";
+  //     } else {
+  //       // Sunucudan token dönmediyse, kayıt işlemi başarısız olmuştur
+  //       console.error("Registration failed:", response.error);
+  //       // Kullanıcıya bir hata mesajı gösterebilirsiniz
+  //     }
+  //   } catch (error) {
+  //     console.error("Registration error:", error);
+  //     // Kayıt sırasında bir hata oluşursa, kullanıcıya bir hata mesajı gösterebilirsiniz
+  //   } finally {
+  //     actions.setSubmitting(false);
+  //   }
+  // };
 
   return (
     <Container
@@ -93,8 +95,8 @@ const Register = () => {
             validationSchema={SignupSchema}
             onSubmit={(values: FormValues, actions) => {
               console.log(values);
-              // register(values);
-              handleSubmit(values, actions);
+              register(values);
+              // handleSubmit(values, actions);
               actions.resetForm();
               actions.setSubmitting(false);
             }}
